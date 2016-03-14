@@ -1,0 +1,26 @@
+body {
+    font-family: 'EB Garamond', serif;
+    background-color: #3C3C3C;
+    color: white;
+}
+
+#load {
+    font-size: 4em;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    padding: 5px;
+    shape-rendering: crispEdges;
+    stroke: white;
+}
+
+text {
+    stroke: white;
+    fill: white;
+}
