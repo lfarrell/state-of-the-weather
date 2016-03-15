@@ -115,6 +115,12 @@ function render(path, month) {
         var precip_yScale = yScale(precip_filtered, height);
         var temp_yScale = yScale(temp_filtered, height);
 
+        var month_drought_yScale = yScale(month_drought_filtered, height);
+        var month_max_yScale = yScale(month_max_filtered, height);
+        var month_min_yScale = yScale(month_min_filtered, height);
+        var month_precip_yScale = yScale(month_precip_filtered, height);
+        var month_temp_yScale = yScale(month_temp_filtered, height);
+
         /* Axises */
         var xAxis = getAxis(xScale, "bottom");
 
@@ -123,11 +129,17 @@ function render(path, month) {
         var precipYAxis = getAxis(precip_yScale, "left");
         var tempYAxis = getAxis(temp_yScale, "left");
 
+        var month_maxYAxis = getAxis(month_max_yScale, "left");
+        var month_minYAxis = getAxis(month_min_yScale, "left");
+        var month_precipYAxis = getAxis(month_precip_yScale, "left");
+        var month_tempYAxis = getAxis(month_temp_yScale, "left");
+
         /* Precip */
-        var precip_svg = showAxises("#avg_precip", xAxis, precipYAxis, "Avg. Precipitation (Inches)");
-        var precip_line = lineGenerator(xScale, precip_yScale, 'value');
+        var precip_svg = showAxises("#avg_precip", xAxis, month_precipYAxis, "Avg. Precipitation (Inches)");
+        var precip_line = lineGenerator(xScale, month_precip_yScale, 'value');
+
         precip_svg.append("path")
-            .attr("d", precip_line(precip_filtered))
+            .attr("d", precip_line(month_precip_filtered))
             .attr("id", "precip")
             .attr("fill", "none")
             .attr("stroke", "steelblue")
@@ -185,29 +197,21 @@ function render(path, month) {
             .on("mouseover", function(d) { console.log(d.anomaly, d.date); });
 
         /* Max Temp */
-        var max_svg = showAxises("#max_temp", xAxis, maxYAxis, "Avg. Max. Temperature (F)");
-        var max_line = lineGenerator(xScale, max_yScale, 'value');
+        var max_svg = showAxises("#max_temp", xAxis, month_maxYAxis, "Avg. Max. Temperature (F)");
+        var max_line = lineGenerator(xScale, month_max_yScale, 'value');
         max_svg.append("path")
-            .attr("d", max_line(max_filtered))
+            .attr("d", max_line(month_max_filtered))
             .attr("id", "max")
             .attr("fill", "none")
             .attr("stroke", "firebrick")
             .attr("stroke-width", 2)
             .attr("transform", "translate(" + margins.left + "," + margins.top + ")");
 
-        max_svg.append("path")
-            .attr("d", max_line(min_filtered))
-            .attr("id", "precip")
-            .attr("fill", "none")
-            .attr("stroke", "steelblue")
-            .attr("stroke-width", 2)
-            .attr("transform", "translate(" + margins.left + "," + margins.top + ")");
-
         /* Min Temp */
-        var min_svg = showAxises("#min_temp", xAxis, minYAxis, "Avg. Min. Temperature (F)");
-        var min_line = lineGenerator(xScale, min_yScale, 'value');
+        var min_svg = showAxises("#min_temp", xAxis, month_minYAxis, "Avg. Min. Temperature (F)");
+        var min_line = lineGenerator(xScale, month_min_yScale, 'value');
         min_svg.append("path")
-            .attr("d", min_line(min_filtered))
+            .attr("d", min_line(month_min_filtered))
             .attr("id", "precip")
             .attr("fill", "none")
             .attr("stroke", "steelblue")
@@ -294,9 +298,9 @@ function barWidth(width, data) {
  * @returns {*}
  */
 function yScale(data, height) {
-    return d3.scale.linear()
-        .domain([d3.max(data, function(d) { return d.value; }), 0])
-        .range([0, height]);
+    var y_scale =  d3.scale.linear().range([0, height]);
+
+    return y_scale.domain([d3.max(data, function(d) { return d.value; }), 0])
 }
 
 /**
@@ -363,7 +367,8 @@ function showAxises(selector, xAxis, yAxis, text) {
     svg.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate("+ margins.left + "," + (height + margins.top) + ")")
-        .call(xAxis);
+
+     d3.selectAll(selector + " g.x").call(xAxis);
 
     svg.append("text")
         .attr("x", width / 2)
@@ -374,7 +379,8 @@ function showAxises(selector, xAxis, yAxis, text) {
     svg.append("g")
         .attr("class", "y axis")
         .attr("transform", "translate(" + margins.left + "," + margins.top + ")")
-        .call(yAxis);
+
+    d3.selectAll(selector + " g.y").call(yAxis);
 
     svg.append("text")
         .attr("transform", "rotate(-90)")
