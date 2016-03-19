@@ -43,13 +43,9 @@ d3.select('#month').on('change', function() {
 })
 
 function render(path, month) {
+    d3.selectAll(".svg").remove();
     var precip_colors = ['#543005','#8c510a','#bf812d','#dfc27d','#f6e8c3','#f5f5f5','#c7eae5','#80cdc1','#35978f','#01665e','#003c30'];
     var temp_colors = ['#a50026','#d73027','#f46d43','#fdae61','#fee090','#ffffbf','#e0f3f8','#abd9e9','#74add1','#4575b4','#313695'].reverse();
-   /* var precip_colors = d3.scale.quantize()
-        .range(['#8c510a','#d8b365','#f6e8c3','#c7eae5','#5ab4ac','#01665e']);
-
-    var temp_colors = d3.scale.quantize()
-        .range(['#d7191c','#fdae61','#ffffbf','#abd9e9','#2c7bb6'].reverse());*/
 
     d3.csv(path, function(data) {
         data.forEach(function(d) {
@@ -135,7 +131,7 @@ function render(path, month) {
         var month_tempYAxis = getAxis(month_temp_yScale, "left");
 
         /* Precip */
-        var precip_svg = showAxises("#avg_precip", xAxis, month_precipYAxis, "Avg. Precipitation (Inches)");
+        var precip_svg = showAxises("#precip_div", "#avg_precip", xAxis, month_precipYAxis, "Avg. Precipitation (Inches)");
         var precip_line = lineGenerator(xScale, month_precip_yScale, 'value');
 
         precip_svg.append("path")
@@ -154,9 +150,11 @@ function render(path, month) {
         var precip_strip_color = stripColors(precip_colors);
         var precip_strip_scale = stripScale(month_precip_filtered, 'anomaly');
 
-        d3.select("#avg_drought")
+        d3.select("#precip_div").append("svg")
             .attr("width", width + margins.left + margins.right)
             .attr("height", 110)
+            .attr("class", "svg")
+            .attr("id", "avg_drought")
             .selectAll("bar")
             .data(month_precip_filtered).enter().append("rect")
             .attr("x", function(d) { return xScale(parse_date(d.date)); })
@@ -185,7 +183,7 @@ function render(path, month) {
             .on("mouseover", function(d) { console.log(d.anomaly, d.date); });
 
         /* Avg Temp Month */
-        var temp_svg = showAxises("#avg_temp_line", xAxis, month_tempYAxis, "Avg. Temperature (F)");
+        var temp_svg = showAxises("#temps_div", "#avg_temp_line", xAxis, month_tempYAxis, "Avg. Temperature (F)");
         var temp_line = lineGenerator(xScale, month_temp_yScale, 'value');
 
         temp_svg.append("path")
@@ -202,9 +200,11 @@ function render(path, month) {
 
         var month_temp_strip_scale = stripScale(month_temp_filtered, 'anomaly');
 
-        d3.select("#month_avg_temp")
+        d3.select("#temps_div").append("svg")
             .attr("width", width + margins.left + margins.right)
             .attr("height", 110)
+            .attr("class", "svg")
+            .attr("id", "month_avg_temp")
             .selectAll("bar")
             .data(month_temp_filtered).enter().append("rect")
             .attr("x", function(d) { return xScale(parse_date(d.date)); })
@@ -216,7 +216,7 @@ function render(path, month) {
             .on("mouseover", function(d) { console.log(d.anomaly, d.date); });
 
         /* Max Temp */
-        var max_svg = showAxises("#max_temp", xAxis, month_maxYAxis, "Avg. Max. Temperature (F)");
+        var max_svg = showAxises("#max_div", "#max_temp", xAxis, month_maxYAxis, "Avg. Max. Temperature (F)");
         var max_line = lineGenerator(xScale, month_max_yScale, 'value');
         max_svg.append("path")
             .attr("id", "max_line")
@@ -231,7 +231,7 @@ function render(path, month) {
             .attr("d", max_line(month_max_filtered));
 
         /* Min Temp */
-        var min_svg = showAxises("#min_temp", xAxis, month_minYAxis, "Avg. Min. Temperature (F)");
+        var min_svg = showAxises("#min_div", "#min_temp", xAxis, month_minYAxis, "Avg. Min. Temperature (F)");
         var min_line = lineGenerator(xScale, month_min_yScale, 'value');
         min_svg.append("path")
             .attr("id", "min_line")
@@ -385,11 +385,13 @@ function getAxis(scale, orientation) {
  * @param text
  * @returns {*}
  */
-function showAxises(selector, xAxis, yAxis, text) {
-    var svg = d3.select(selector);
+function showAxises(selector, svg_selector, xAxis, yAxis, text) {
+    var svg = d3.select(selector).append('svg');
 
     svg.attr("width", width + margins.left + margins.right)
-       .attr("height", height + margins.top + margins.bottom);
+        .attr("height", height + margins.top + margins.bottom)
+        .attr("id", svg_selector)
+        .attr("class", "svg")
 
     svg.append("g")
         .attr("class", "x axis")
