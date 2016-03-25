@@ -25,17 +25,22 @@ text {
     fill: white;
 }
 
+#precip_avg_line {
+    stroke-dasharray: 5,5;
+}
+
 /* D3 tip CSS */
 
 .d3-tip {
     line-height: 1;
-    font-weight: bold;
     padding: 12px;
     background: rgba(0, 0, 0, 0.8);
     color: #fff;
-    border-radius: 2px;
+    border-radius: 8px;
     pointer-events: none;
     font-size: .85em;
+    height: auto;
+    widht: auto;
 }
 
 /* Creates a small triangle extender for the tooltip */
