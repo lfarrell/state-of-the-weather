@@ -166,19 +166,15 @@ var render = _.throttle(function() {
 
         var temp_svg = showAxises("#temps_div", "#avg_temp_line", width, xAxis, month_tempYAxis, "Avg. Temperature (F)");
         var temp_line = lineGenerator(xScale, month_temp_yScale, 'value');
+        var temp_avg_line = lineGenerator(xScale, month_temp_yScale, 'mean');
+        temp_svg = appendPath(temp_svg, "temp_line", "steelblue");
+        drawPath("#temp_line", temp_line, month_temp_filtered);
 
-        temp_svg.append("path")
-            .attr("id", "temp_line")
-            .attr("fill", "none")
-            .attr("stroke", "steelblue")
-            .attr("stroke-width", 2)
-            .attr("transform", "translate(" + margins.left + "," + margins.top + ")");
+        // Add historic avg
+        appendPath(temp_svg, "temp_avg_line", "yellow");
+        drawPath("#temp_avg_line", temp_avg_line, month_temp_filtered);
 
-        d3.select("#temp_line").transition()
-            .duration(1000)
-            .ease("sin-in-out")
-            .attr("d", temp_line(month_temp_filtered));
-
+        // Add temp strip chart
         var month_temp_strip_scale = stripScale(month_temp_filtered, 'anomaly');
 
         var tip_temp = d3.tip().attr('class', 'd3-tip').html(function(d) {
@@ -196,17 +192,14 @@ var render = _.throttle(function() {
 
         var max_svg = showAxises("#max_div", "#max_temp", width, xAxis, month_maxYAxis, "Avg. Max. Temperature (F)");
         var max_line = lineGenerator(xScale, month_max_yScale, 'value');
-        max_svg.append("path")
-            .attr("id", "max_line")
-            .attr("fill", "none")
-            .attr("stroke", "firebrick")
-            .attr("stroke-width", 2)
-            .attr("transform", "translate(" + margins.left + "," + margins.top + ")");
+        var max_avg_line = lineGenerator(xScale, month_max_yScale, 'mean');
 
-        d3.select("#max_line").transition()
-            .duration(1000)
-            .ease("sin-in-out")
-            .attr("d", max_line(month_max_filtered));
+        max_svg = appendPath(max_svg, "max_line", "firebrick");
+        drawPath("#max_line", max_line, month_max_filtered);
+
+        // Add historic avg
+        appendPath(max_svg, "max_avg_line", "yellow");
+        drawPath("#max_avg_line", max_avg_line, month_max_filtered);
 
         /* Min Temp */
         d3.select("#mintemp").text(month_min_max_min_value.max[4].value);
@@ -214,18 +207,15 @@ var render = _.throttle(function() {
 
         var min_svg = showAxises("#min_div", "#min_temp", width, xAxis, month_minYAxis, "Avg. Min. Temperature (F)");
         var min_line = lineGenerator(xScale, month_min_yScale, 'value');
+        var min_avg_line = lineGenerator(xScale, month_min_yScale, 'mean');
 
-        min_svg.append("path")
-            .attr("id", "min_line")
-            .attr("fill", "none")
-            .attr("stroke", "steelblue")
-            .attr("stroke-width", 2)
-            .attr("transform", "translate(" + margins.left + "," + margins.top + ")");
+        min_svg = appendPath(min_svg, "min_line", "steelblue");
+        drawPath("#min_line", min_line, month_min_filtered);
 
-        d3.select("#min_line").transition()
-            .duration(1000)
-            .ease("sin-in-out")
-            .attr("d", min_line(month_min_filtered));
+        // Add historic avg
+        appendPath(min_svg, "min_avg_line", "yellow");
+        drawPath("#min_avg_line", min_avg_line, month_min_filtered);
+
 
         /* Precip */
         d3.select("#wettest").text(month_precip_max_min_value.max[4].value);
@@ -235,30 +225,14 @@ var render = _.throttle(function() {
         var precip_line = lineGenerator(xScale, month_precip_yScale, 'value');
         var precip_avg_line = lineGenerator(xScale, month_precip_yScale, 'mean');
 
-        precip_svg.append("path")
-            .attr("id", "precip_line")
-            .attr("fill", "none")
-            .attr("stroke", "steelblue")
-            .attr("stroke-width", 2)
-            .attr("transform", "translate(" + margins.left + "," + margins.top + ")");
+        precip_svg = appendPath(precip_svg, "precip_line", "steelblue");
+        drawPath("#precip_line", precip_line, month_precip_filtered);
 
-        d3.select("#precip_line").transition()
-            .duration(1000)
-            .ease("sin-in-out")
-            .attr("d", precip_line(month_precip_filtered));
+        // Add historic avg
+        appendPath(precip_svg, "precip_avg_line", "yellow");
+        drawPath("#precip_avg_line", precip_avg_line, month_precip_filtered);
 
-        precip_svg.append("path")
-            .attr("id", "precip_avg_line")
-            .attr("fill", "none")
-            .attr("stroke", "yellow")
-            .attr("stroke-width", 2)
-            .attr("transform", "translate(" + margins.left + "," + margins.top + ")");
-
-        d3.select("#precip_avg_line").transition()
-            .duration(1000)
-            .ease("sin-in-out")
-            .attr("d", precip_avg_line(month_precip_filtered));
-
+        // Precip strip plot
         var precip_strip_color = stripColors(precip_colors);
         var precip_strip_scale = stripScale(month_precip_filtered, 'anomaly');
 
@@ -352,6 +326,24 @@ var render = _.throttle(function() {
                 });
 
             return add;
+        }
+
+        function appendPath(svg, id, color) {
+            svg.append("path")
+                .attr("id", id)
+                .attr("fill", "none")
+                .attr("stroke", color)
+                .attr("stroke-width", 2)
+                .attr("transform", "translate(" + margins.left + "," + margins.top + ")");
+
+            return svg;
+        }
+
+        function drawPath(selector, scale, data) {
+            return d3.select(selector).transition()
+                .duration(1000)
+                .ease("sin-in-out")
+                .attr("d", scale(data));
         }
     });
 }, 200);
