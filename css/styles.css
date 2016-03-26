@@ -25,6 +25,9 @@ text {
     fill: white;
 }
 
+#temp_avg_line,
+#max_avg_line,
+#min_avg_line,
 #precip_avg_line {
     stroke-dasharray: 5,5;
 }

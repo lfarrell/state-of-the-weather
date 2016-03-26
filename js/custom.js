@@ -5,6 +5,7 @@ var margins = { top: 20, right: 50, left: 100, bottom: 75 },
 localStorage.clear();
 localStorage.setItem('path', 'all_by_state/US.csv');
 localStorage.setItem('month', '01');
+localStorage.setItem('state-name', 'US');
 
 d3.select('#state').on('change', function() {
     var selected_state_name = this.options[this.selectedIndex].innerHTML;
@@ -20,6 +21,7 @@ d3.select('#state').on('change', function() {
 
     localStorage.setItem('path', path);
     localStorage.setItem('state', state_val);
+    localStorage.setItem('state-name', selected_state_name);
 
     render();
 });
@@ -46,6 +48,8 @@ var render = _.throttle(function() {
     var temp_colors = ['#a50026','#d73027','#f46d43','#fdae61','#fee090','#ffffbf','#e0f3f8','#abd9e9','#74add1','#4575b4','#313695'].reverse();
     var path = localStorage.getItem('path');
     var month = localStorage.getItem('month');
+    var state_storage = localStorage.getItem('state-name');
+    var state_name = state_storage === 'US' ? 'the ' + state_storage : state_storage;
     var width = window.innerWidth - 100 - margins.right - margins.left;
 
     d3.csv(path, function(data) {
@@ -61,7 +65,7 @@ var render = _.throttle(function() {
         // Sort by year & type plus min max values
         var sorted = _.sortByOrder(data, ['year', 'month'], ['asc', 'asc']);
 
-        var drought_filtered = dataFilter(sorted, 'drought', false, false);
+        /*   var drought_filtered = dataFilter(sorted, 'drought', false, false);
         var max_filtered = dataFilter(sorted, 'max', false, false);
         var min_filtered = dataFilter(sorted, 'min', false, false);
         var precip_filtered =  dataFilter(sorted, 'precip', false, false);
@@ -77,7 +81,7 @@ var render = _.throttle(function() {
         var max_max_min_anomaly = maxMin(max_filtered, 'anomaly');
         var min_max_min_anomaly = maxMin(min_filtered, 'anomaly');
         var precip_max_min_anomaly = maxMin(precip_filtered, 'anomaly');
-        var temp_max_min_anomaly = maxMin(temp_filtered, 'anomaly');
+        var temp_max_min_anomaly = maxMin(temp_filtered, 'anomaly'); */
 
         // Sort by month and type plus min max values
         var month_sorted =  _.sortByOrder(data, ['month', 'year'], ['asc', 'asc']);
@@ -94,11 +98,11 @@ var render = _.throttle(function() {
         var month_precip_max_min_value = maxMin(month_precip_filtered, 'value');
         var month_temp_max_min_value = maxMin(month_temp_filtered, 'value');
 
-        var month_drought_max_min_anomaly = maxMin(month_drought_filtered, 'anomaly');
+    /*    var month_drought_max_min_anomaly = maxMin(month_drought_filtered, 'anomaly');
         var month_max_max_min_anomaly = maxMin(month_max_filtered, 'anomaly');
         var month_min_max_min_anomaly = maxMin(month_min_filtered, 'anomaly');
         var month_precip_max_min_anomaly = maxMin(month_precip_filtered, 'anomaly');
-        var month_temp_max_min_anomaly = maxMin(month_temp_filtered, 'anomaly');
+        var month_temp_max_min_anomaly = maxMin(month_temp_filtered, 'anomaly'); */
 
         /* Bisect data */
         var bisectDate = d3.bisector(function(d) { return parse_date(d.date); }).right;
@@ -108,11 +112,11 @@ var render = _.throttle(function() {
             .domain(d3.extent(data, function(d) { return parse_date(d.date); }))
             .range([0, width]);
 
-        var drought_yScale = yScale(drought_filtered, height);
+     /*   var drought_yScale = yScale(drought_filtered, height);
         var max_yScale = yScale(max_filtered, height);
         var min_yScale = yScale(min_filtered, height);
         var precip_yScale = yScale(precip_filtered, height);
-        var temp_yScale = yScale(temp_filtered, height);
+        var temp_yScale = yScale(temp_filtered, height); */
 
         var month_drought_yScale = yScale(month_drought_filtered, height);
         var month_max_yScale = yScale(month_max_filtered, height);
@@ -123,19 +127,110 @@ var render = _.throttle(function() {
         /* Axises */
         var xAxis = getAxis(xScale, "bottom");
 
-        var maxYAxis = getAxis(max_yScale, "left");
+   /*     var maxYAxis = getAxis(max_yScale, "left");
         var minYAxis = getAxis(min_yScale, "left");
         var precipYAxis = getAxis(precip_yScale, "left");
-        var tempYAxis = getAxis(temp_yScale, "left");
+        var tempYAxis = getAxis(temp_yScale, "left"); */
 
         var month_maxYAxis = getAxis(month_max_yScale, "left");
         var month_minYAxis = getAxis(month_min_yScale, "left");
         var month_precipYAxis = getAxis(month_precip_yScale, "left");
         var month_tempYAxis = getAxis(month_temp_yScale, "left");
 
-        var avg_line = lineGenerator(xScale, month_precip_yScale, 'mean');
+        var bar_width = barWidth(width, month_precip_filtered);
+
+        /* Fill in all month/state texts */
+        d3.selectAll(".selected-month").text(stringDate(month));
+        d3.selectAll(".selected-state").text(state_name);
+
+        /* Avg Temp Year */
+        var temp_strip_color = stripColors(temp_colors);
+      /*  var temp_strip_scale = stripScale(temp_filtered, 'anomaly');
+
+        d3.select("#avg_temp")
+            .attr("width", width + margins.left + margins.right)
+            .attr("height", 110)
+            .selectAll("bar")
+            .data(temp_filtered).enter().append("rect")
+            .attr("x", function(d) { return xScale(parse_date(d.date)); })
+            .attr("width", bar_width)
+            .attr("y",  10)
+            .attr("height", 100)
+            .attr("transform", "translate(" + margins.left + "," + margins.top + ")")
+            .style("fill", function(d) { return temp_strip_color(temp_strip_scale(d.anomaly)); })
+            .on("mouseover", function(d) { console.log(d.anomaly, d.date); }); */
+
+        /* Avg Temp Month */
+        d3.select("#hottest").text(month_temp_max_min_value.max[4].value);
+        d3.select("#hottest-year").text(month_temp_max_min_value.max[4].year);
+
+        var temp_svg = showAxises("#temps_div", "#avg_temp_line", width, xAxis, month_tempYAxis, "Avg. Temperature (F)");
+        var temp_line = lineGenerator(xScale, month_temp_yScale, 'value');
+
+        temp_svg.append("path")
+            .attr("id", "temp_line")
+            .attr("fill", "none")
+            .attr("stroke", "steelblue")
+            .attr("stroke-width", 2)
+            .attr("transform", "translate(" + margins.left + "," + margins.top + ")");
+
+        d3.select("#temp_line").transition()
+            .duration(1000)
+            .ease("sin-in-out")
+            .attr("d", temp_line(month_temp_filtered));
+
+        var month_temp_strip_scale = stripScale(month_temp_filtered, 'anomaly');
+
+        var tip_temp = d3.tip().attr('class', 'd3-tip').html(function(d) {
+            return '<h4 class="text-center">' + stringDate(month) + '(' + d.year + ')</h4>' +
+                '<p>Historical Avg: ' + monthAvg(avgs, 'temp', month) + ' degrees</p>' +
+                '<p>Actual Avg: ' + d.value + ' degrees</p>' +
+                '<p>Departure from Avg: ' + d.anomaly + ' degrees</p>';
+        });
+
+        drawStrip("#temps_div", tip_temp, temp_strip_color, month_temp_strip_scale, month_temp_filtered);
+
+        /* Max Temp */
+        d3.select("#maxtemp").text(month_max_max_min_value.max[4].value);
+        d3.select("#maxtemp-year").text(month_max_max_min_value.max[4].year);
+
+        var max_svg = showAxises("#max_div", "#max_temp", width, xAxis, month_maxYAxis, "Avg. Max. Temperature (F)");
+        var max_line = lineGenerator(xScale, month_max_yScale, 'value');
+        max_svg.append("path")
+            .attr("id", "max_line")
+            .attr("fill", "none")
+            .attr("stroke", "firebrick")
+            .attr("stroke-width", 2)
+            .attr("transform", "translate(" + margins.left + "," + margins.top + ")");
+
+        d3.select("#max_line").transition()
+            .duration(1000)
+            .ease("sin-in-out")
+            .attr("d", max_line(month_max_filtered));
+
+        /* Min Temp */
+        d3.select("#mintemp").text(month_min_max_min_value.max[4].value);
+        d3.select("#mintemp-year").text(month_min_max_min_value.max[4].year);
+
+        var min_svg = showAxises("#min_div", "#min_temp", width, xAxis, month_minYAxis, "Avg. Min. Temperature (F)");
+        var min_line = lineGenerator(xScale, month_min_yScale, 'value');
+
+        min_svg.append("path")
+            .attr("id", "min_line")
+            .attr("fill", "none")
+            .attr("stroke", "steelblue")
+            .attr("stroke-width", 2)
+            .attr("transform", "translate(" + margins.left + "," + margins.top + ")");
+
+        d3.select("#min_line").transition()
+            .duration(1000)
+            .ease("sin-in-out")
+            .attr("d", min_line(month_min_filtered));
 
         /* Precip */
+        d3.select("#wettest").text(month_precip_max_min_value.max[4].value);
+        d3.select("#wettest-year").text(month_precip_max_min_value.max[4].year);
+
         var precip_svg = showAxises("#precip_div", "#avg_precip", width, xAxis, month_precipYAxis, "Avg. Precipitation (Inches)");
         var precip_line = lineGenerator(xScale, month_precip_yScale, 'value');
         var precip_avg_line = lineGenerator(xScale, month_precip_yScale, 'mean');
@@ -164,91 +259,31 @@ var render = _.throttle(function() {
             .ease("sin-in-out")
             .attr("d", precip_avg_line(month_precip_filtered));
 
-        var bar_width = barWidth(width, month_precip_filtered);
         var precip_strip_color = stripColors(precip_colors);
         var precip_strip_scale = stripScale(month_precip_filtered, 'anomaly');
 
         var tip_precip = d3.tip().attr('class', 'd3-tip').html(function(d) {
-            return '<h4 class="text-center">' + stringDate(month) + '(' + d.year + ')</h4>' +
-                '<p>Historical Avg: ' + monthAvg(avgs, 'precip', month).toFixed(2) + ' inches</p>' +
+            return '<h4 class="text-center">' + stringDate(month) + ' (' + d.year + ')</h4>' +
+                '<p>Historical Avg: ' + monthAvg(avgs, 'precip', month) + ' inches</p>' +
                 '<p>Departure from Avg: ' + d.anomaly + ' inches</p>';
         });
 
-        drawStrip("#precip_div", tip_precip, precip_strip_color, precip_strip_scale, month_precip_filtered)
+        drawStrip("#precip_div", tip_precip, precip_strip_color, precip_strip_scale, month_precip_filtered);
 
-        /* Avg Temp Year */
-        var temp_strip_color = stripColors(temp_colors);
-      /*  var temp_strip_scale = stripScale(temp_filtered, 'anomaly');
+        /* Palmer Drought Index */
+        d3.select("#driest").text(month_drought_max_min_value.min[0].value);
+        d3.select("#driest-year").text(month_drought_max_min_value.min[0].year);
 
-        d3.select("#avg_temp")
-            .attr("width", width + margins.left + margins.right)
-            .attr("height", 110)
-            .selectAll("bar")
-            .data(temp_filtered).enter().append("rect")
-            .attr("x", function(d) { return xScale(parse_date(d.date)); })
-            .attr("width", bar_width)
-            .attr("y",  10)
-            .attr("height", 100)
-            .attr("transform", "translate(" + margins.left + "," + margins.top + ")")
-            .style("fill", function(d) { return temp_strip_color(temp_strip_scale(d.anomaly)); })
-            .on("mouseover", function(d) { console.log(d.anomaly, d.date); }); */
+        var palmer_strip_scale = stripScale(month_drought_filtered, 'anomaly');
 
-        /* Avg Temp Month */
-        var temp_svg = showAxises("#temps_div", "#avg_temp_line", width, xAxis, month_tempYAxis, "Avg. Temperature (F)");
-        var temp_line = lineGenerator(xScale, month_temp_yScale, 'value');
-
-        temp_svg.append("path")
-            .attr("id", "temp_line")
-            .attr("fill", "none")
-            .attr("stroke", "steelblue")
-            .attr("stroke-width", 2)
-            .attr("transform", "translate(" + margins.left + "," + margins.top + ")");
-
-        d3.select("#temp_line").transition()
-            .duration(1000)
-            .ease("sin-in-out")
-            .attr("d", temp_line(month_temp_filtered));
-
-        var month_temp_strip_scale = stripScale(month_temp_filtered, 'anomaly');
-
-        var tip_temp = d3.tip().attr('class', 'd3-tip').html(function(d) {
-            return '<h4 class="text-center">' + stringDate(month) + '(' + d.year + ')</h4>' +
-                '<p>Historical Avg: ' + monthAvg(avgs, 'temp', month) + ' degrees</p>' +
-                '<p>Actual Avg: ' + d.value + ' degrees</p>' +
-                '<p>Departure from Avg: ' + d.anomaly + ' degrees</p>';
+        var tip_palmer = d3.tip().attr('class', 'd3-tip').html(function(d) {
+            return '<h4 class="text-center">' + stringDate(month) + ' (' + d.year + ')</h4>' +
+                '<p>Historical Avg: ' + monthAvg(avgs, 'drought', month) + '</p>' +
+                '<p>Departure from Avg: ' + d.anomaly + '</p>';
         });
 
-        drawStrip("#temps_div", tip_temp, temp_strip_color, month_temp_strip_scale, month_temp_filtered);
+        drawStrip("#drought_div", tip_palmer, precip_strip_color, palmer_strip_scale, month_drought_filtered);
 
-        /* Max Temp */
-        var max_svg = showAxises("#max_div", "#max_temp", width, xAxis, month_maxYAxis, "Avg. Max. Temperature (F)");
-        var max_line = lineGenerator(xScale, month_max_yScale, 'value');
-        max_svg.append("path")
-            .attr("id", "max_line")
-            .attr("fill", "none")
-            .attr("stroke", "firebrick")
-            .attr("stroke-width", 2)
-            .attr("transform", "translate(" + margins.left + "," + margins.top + ")");
-
-        d3.select("#max_line").transition()
-            .duration(1000)
-            .ease("sin-in-out")
-            .attr("d", max_line(month_max_filtered));
-
-        /* Min Temp */
-        var min_svg = showAxises("#min_div", "#min_temp", width, xAxis, month_minYAxis, "Avg. Min. Temperature (F)");
-        var min_line = lineGenerator(xScale, month_min_yScale, 'value');
-        min_svg.append("path")
-            .attr("id", "min_line")
-            .attr("fill", "none")
-            .attr("stroke", "steelblue")
-            .attr("stroke-width", 2)
-            .attr("transform", "translate(" + margins.left + "," + margins.top + ")");
-
-        d3.select("#min_line").transition()
-            .duration(1000)
-            .ease("sin-in-out")
-            .attr("d", min_line(month_min_filtered));
 
    /*     var vertical = d3.select("#temps_div")
             .append("div")
@@ -347,14 +382,14 @@ function dataFilter(datas, type, month, avgs) {
 }
 
 /**
- * Avg value for month
+ * Avg value for a given month & climate parameter
  * @param avgs
  * @param field
  * @param month
  * @returns {*}
  */
 function monthAvg(avgs, field, month) {
-    return avgs[field][parseInt(month,10) - 1].value
+    return avgs[field][parseInt(month,10) - 1].value.toFixed(1);
 }
 
 /**
