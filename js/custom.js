@@ -40,8 +40,8 @@ d3.select('#month').on('change', function() {
 });
 
 var render = _.throttle(function() {
-    d3.selectAll('.charts').classed('hide', true);
-    d3.selectAll('#load').classed('hide', false);
+    //d3.selectAll('.charts').classed('hide', true);
+   // d3.selectAll('#load').classed('hide', false);
     d3.selectAll(".svg").remove();
 
     var precip_colors = ['#543005','#8c510a','#bf812d','#dfc27d','#f6e8c3','#f5f5f5','#c7eae5','#80cdc1','#35978f','#01665e','#003c30'];
@@ -176,14 +176,19 @@ var render = _.throttle(function() {
         appendPath(temp_svg, "temp_avg_line", "yellow");
         drawPath("#temp_avg_line", temp_avg_line, month_temp_filtered);
 
+        // hover over
+        focusHover(temp_svg, month_temp_filtered, month_temp_yScale, "#temps_div");
+
         // Add temp strip chart
         var month_temp_strip_scale = stripScale(month_temp_filtered, 'anomaly');
 
         var tip_temp = d3.tip().attr('class', 'd3-tip').html(function(d) {
             return '<h4 class="text-center">' + stringDate(month) + '(' + d.year + ')</h4>' +
-                '<p>Historical Avg: ' + monthAvg(avgs, 'temp', month) + ' degrees</p>' +
-                '<p>Actual Avg: ' + d.value + ' degrees</p>' +
-                '<p>Departure from Avg: ' + d.anomaly + ' degrees</p>';
+                '<ul class="list-unstyled">' +
+                '<li>Historical Avg: ' + monthAvg(avgs, 'temp', month) + ' degrees</li>' +
+                '<li>Actual Avg: ' + d.value + ' degrees</li>' +
+                '<li>Departure from Avg: ' + d.anomaly + ' degrees</li>' +
+                '</ul>';
         });
 
         drawStrip("#temps_div", tip_temp, temp_strip_color, month_temp_strip_scale, month_temp_filtered);
@@ -205,6 +210,9 @@ var render = _.throttle(function() {
         appendPath(max_svg, "max_avg_line", "yellow");
         drawPath("#max_avg_line", max_avg_line, month_max_filtered);
 
+        // hover over
+        focusHover(max_svg, month_max_filtered, month_max_yScale, "#max_div");
+
         /* Min Temp */
         d3.select("#mintemp").text(month_min_max_min_value.max[4].value);
         d3.select("#mintemp-year").text(month_min_max_min_value.max[4].year);
@@ -222,6 +230,8 @@ var render = _.throttle(function() {
         appendPath(min_svg, "min_avg_line", "yellow");
         drawPath("#min_avg_line", min_avg_line, month_min_filtered);
 
+        // hover over
+        focusHover(min_svg, month_min_filtered, month_min_yScale, "#min_div");
 
         /* Precip */
         d3.select("#wettest").text(month_precip_max_min_value.max[4].value);
@@ -240,14 +250,20 @@ var render = _.throttle(function() {
         appendPath(precip_svg, "precip_avg_line", "yellow");
         drawPath("#precip_avg_line", precip_avg_line, month_precip_filtered);
 
+        // hover over
+        focusHover(precip_svg, month_precip_filtered, month_precip_yScale, "#precip_div");
+
         // Precip strip plot
         var precip_strip_color = stripColors(precip_colors);
         var precip_strip_scale = stripScale(month_precip_filtered, 'anomaly');
 
         var tip_precip = d3.tip().attr('class', 'd3-tip').html(function(d) {
             return '<h4 class="text-center">' + stringDate(month) + ' (' + d.year + ')</h4>' +
-                '<p>Historical Avg: ' + monthAvg(avgs, 'precip', month) + ' inches</p>' +
-                '<p>Departure from Avg: ' + d.anomaly + ' inches</p>';
+                '<ul class="list-unstyled"' +
+                '<li>Historical Avg: ' + monthAvg(avgs, 'precip', month) + ' inches</li>' +
+                '<li>Actual Avg: ' + d.value + ' inches</li>' +
+                '<li>Departure from Avg: ' + d.anomaly + ' inches</li>' +
+                '</ul>';
         });
 
         drawStrip("#precip_div", tip_precip, precip_strip_color, precip_strip_scale, month_precip_filtered);
@@ -262,51 +278,14 @@ var render = _.throttle(function() {
 
         var tip_palmer = d3.tip().attr('class', 'd3-tip').html(function(d) {
             return '<h4 class="text-center">' + stringDate(month) + ' (' + d.year + ')</h4>' +
-                '<p>Historical Avg: ' + monthAvg(avgs, 'drought', month) + '</p>' +
-                '<p>Departure from Avg: ' + d.anomaly + '</p>';
+                '<ul class="list-unstyled"' +
+                '<li>Historical Avg: ' + monthAvg(avgs, 'drought', month) + '</li>' +
+                '<li>Actual Avg: ' + d.value + '</li>' +
+                '<li>Departure from Avg: ' + d.anomaly + '</li>' +
+                '</ul>';
         });
 
         drawStrip("#drought_div", tip_palmer, precip_strip_color, palmer_strip_scale, month_drought_filtered);
-
-
-   /*     var vertical = d3.select("#temps_div")
-            .append("div")
-            .style("position", "absolute")
-            .style("z-index", "19")
-            .style("width", "2px")
-           // .style("height", 50)
-            .style("top", "130px")
-            .style("bottom", "195px")
-            .style("left", "0px")
-            .style("background", "white");
-
-        var mousex;
-
-        d3.select(".svg")
-            .on("mousemove", function(){
-                mousex = d3.mouse(this);
-                mousex = mousex[0] + 5;
-                vertical.style("left", mousex + "px" )})
-            .on("mouseover", function(){
-                mousex = d3.mouse(this);
-                mousex = mousex[0] + 5;
-                vertical.style("left", mousex + "px")}); */
-
-        d3.selectAll('.row').classed('hide', false);
-        d3.selectAll('#load').classed('hide', true);
-
-        function overlay(svg_element) {
-            svg_element.append("rect")
-                .attr("class", "overlay")
-                .attr("width", width)
-                .attr("height", height)
-                .on("mouseover", function() { focus.style("display", null); })
-                .on("mouseout", function() { focus.style("display", "none"); })
-                .on("mousemove", mousemove)
-                .translate([margins.left, margins.top]);
-
-            return svg_element;
-        }
 
         function drawStrip(selector, tip, strip_color, strip_scale, data) {
             var strip = d3.select(selector).append("svg")
@@ -354,6 +333,60 @@ var render = _.throttle(function() {
                 .ease("sin-in-out")
                 .attr("d", scale(data));
         }
+
+        /**
+         * Add overlay circle & text
+         * @param chart
+         * @returns {CSSStyleDeclaration}
+         */
+        function focusHover(chart, data, yScale, selector) {
+            var focus = chart.append("g")
+                .attr("class", "focus")
+                .style("display", "none");
+
+            focus.append("circle")
+                .attr("class", "y0")
+                .attr("r", 4.5);
+
+            focus.append("text")
+                .attr("class", "y0")
+                .attr("x", 9)
+                .attr("dy", ".35em");
+
+            chart.append("rect")
+                .attr("class", "overlay")
+                .attr("width", width)
+                .attr("height", height)
+                .on("mouseover", function() { focus.style("display", null); })
+                .on("mouseout", function() { focus.style("display", "none"); })
+                .on("mousemove", mousemove)
+                .translate([margins.left, margins.top]);
+
+            function mousemove() {
+                var x0 = xScale.invert(d3.mouse(this)[0]),
+                    i = bisectDate(data, x0, 1),
+                    d0 = data[i - 1],
+                    d1 = data[i];
+
+                if(d1 === undefined) d1 = Infinity;
+                var d = x0 - d0.key > d1.key - x0 ? d1 : d0;
+
+                var transform_values = [(xScale(parse_date(d.date)) + margins.left), (yScale(d.value) + margins.top)];
+                d3.select(selector + " circle.y0").translate(transform_values);
+                d3.select(selector + " text.y0").translate(transform_values)
+                    .tspans([
+                        "Date: " + d.year,
+                        "Historic Avg: " + d.mean,
+                        "Actual Avg: " + d.value,
+                        "Anomaly: " + d.anomaly
+                    ]);
+            }
+
+            return chart;
+        }
+
+        d3.selectAll('.row').classed('hide', false);
+        d3.selectAll('#load').classed('hide', true);
     });
 }, 400);
 
@@ -459,18 +492,6 @@ function yScale(data, height) {
 }
 
 /**
- * Y scale for anomaly charts
- * @param data
- * @param height
- * @returns {*}
- */
-function yScaleAnomaly(data, height) {
-    return d3.scale.linear()
-        .domain(d3.extent(data, ƒ('anomaly')))
-        .range([0, height]);
-}
-
-/**
  * Color codes for strip charts
  * @param values
  * @returns {*}
@@ -571,26 +592,6 @@ function stringDate(month) {
     var month_num = parseInt(month, 10) - 1;
 
     return month_names[month_num];
-}
-
-function createFocus(chart) {
-    var focus = chart.append("g")
-        .attr("class", "focus")
-        .style("display", "none");
-
-    focus.append("circle")
-        .attr("class", "y0")
-        .attr("r", 4.5);
-
-    focus.append("line")
-        .attr("x1")
-
-    focus.append("text")
-        .attr("class", "y0")
-        .attr("x", 9)
-        .attr("dy", ".35em");
-
-    return focus;
 }
 
 render();

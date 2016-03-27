@@ -32,18 +32,32 @@ text {
     stroke-dasharray: 5,5;
 }
 
+/* Overlay */
+.overlay {
+    fill: none;
+    pointer-events: all;
+}
+
+.focus circle {
+    fill: none;
+    stroke: white;
+}
+
+g.focus text {
+    font-size: .8em;
+}
+
 /* D3 tip CSS */
 
 .d3-tip {
     line-height: 1;
-    padding: 12px;
+    padding: 5px 12px;
     background: rgba(0, 0, 0, 0.8);
     color: #fff;
     border-radius: 8px;
     pointer-events: none;
-    font-size: .85em;
     height: auto;
-    widht: auto;
+    width: auto;
 }
 
 /* Creates a small triangle extender for the tooltip */

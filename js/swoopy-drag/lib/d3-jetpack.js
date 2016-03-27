@@ -14,13 +14,17 @@
         };
 
         d3.selection.prototype.tspans = function(lines, lh) {
-            return this.selectAll('tspan')
-                .data(lines)
-                .enter()
-                .append('tspan')
-                .text(function(d) { return d; })
+            var span = this.selectAll('tspan')
+                .data(lines);
+
+            span.enter()
+                .append('tspan');
+
+            span.text(function(d) { return d; })
                 .attr('x', 0)
                 .attr('dy', function(d,i) { return i ? lh || 15 : 0; });
+
+            return span;
         };
 
         d3.selection.prototype.append = 
