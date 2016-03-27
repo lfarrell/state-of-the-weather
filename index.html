@@ -110,23 +110,35 @@
             <h2 class="text-center">Selected Area: <span class="selected_state">Contiguous U.S.</span>
                 (<span class="selected_month">January</span>)</h2>
             <h3 class="text-center">Average Temperature</h3>
-            <p class="col-md-offset-1">The hottest daily average temperature for <span class="selected-month"></span>
-                in <span class="selected-state"></span> on record was in <span id="hottest-year"></span>
+            <p class="col-md-offset-1">The hottest daily average temperature for <span class="selected-state"></span>
+                in <span class="selected-month"></span> was in <span id="hottest-year"></span>
                 when the average temperature was <span id="hottest"></span> degrees.
+            </p>
+            <p class="col-md-offset-1">The coolest daily average temperature for <span class="selected-state"></span>
+                in <span class="selected-month"></span> was in <span id="least-hottest-year"></span>
+                when the average temperature was <span id="least-hottest"></span> degrees.
             </p>
         </div>
         <div id="max_div" class="col-sm-12 col-lg-12">
             <h3 class="text-center">Average Maximum Temperature</h3>
-            <p class="col-md-offset-1">The hottest maximum daily average temperature for <span class="selected-month"></span>
-                in <span class="selected-state"></span> on record was in <span id="maxtemp-year"></span> when the
+            <p class="col-md-offset-1">The hottest maximum daily average temperature for <span class="selected-state"></span>
+                in <span class="selected-month"></span> was in <span id="maxtemp-year"></span> when the
                 average maximum temperature was <span id="maxtemp"></span> degrees.
+            </p>
+            <p class="col-md-offset-1">The coolest maximum daily average temperature for <span class="selected-state"></span>
+                in <span class="selected-month"></span> was in <span id="least-maxtemp-year"></span> when the
+                average maximum temperature was <span id="least-maxtemp"></span> degrees.
             </p>
         </div>
         <div id="min_div" class="col-sm-12 col-lg-12">
             <h3 class="text-center">Average Minimum Temperature</h3>
-            <p class="col-md-offset-1">The hottest minimum daily average temperature for <span class="selected-month"></span>
-                in <span class="selected-state"></span> on record was
+            <p class="col-md-offset-1">The hottest minimum daily average temperature for <span class="selected-state"></span>
+                in <span class="selected-month"></span> was
                 in <span id="mintemp-year"></span> when the average minimum temperature was <span id="mintemp"></span> degrees.
+            </p>
+            <p class="col-md-offset-1">The coldest minimum daily average temperature for <span class="selected-state"></span>
+                in <span class="selected-month"></span> on record was
+                in <span id="least-mintemp-year"></span> when the average minimum temperature was <span id="least-mintemp"></span> degrees.
             </p>
         </div>
         <div id="precip_div" class="col-sm-12 col-lg-12">
@@ -135,10 +147,17 @@
                  <span id="wettest-year"></span> when an average of <span id="wettest"></span> inches of rain
                 fell across <span class="selected-state"></span>.
             </p>
+            <p class="col-md-offset-1">The driest <span class="selected-month"></span> on record was in
+                <span id="least-wettest-year"></span> when an average of <span id="least-wettest"></span> inches of rain
+                fell across <span class="selected-state"></span>.
+            </p>
         </div>
         <div id="drought_div" class="col-sm-12 col-lg-12">
             <h3 class="text-center">Average Drought</h3>
-            <p class="col-md-offset-1">The driest <span class="selected-month"></span> on record in <span class="selected-state"></span>
+            <p class="col-md-offset-1">The least drought ridden <span class="selected-month"></span> on record in <span class="selected-state"></span>
+                was <span id="least-driest-year"></span> when the Palmer Drought Index was <span id="least-driest"></span>.
+            </p>
+            <p class="col-md-offset-1">The deepest drought for <span class="selected-month"></span> on record in <span class="selected-state"></span>
                 was <span id="driest-year"></span> when the Palmer Drought Index was <span id="driest"></span>.
             </p>
         </div>

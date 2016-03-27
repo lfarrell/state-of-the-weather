@@ -10,14 +10,14 @@ localStorage.setItem('state-name', 'US');
 d3.select('#state').on('change', function() {
     var selected_state_name = this.options[this.selectedIndex].innerHTML;
     var state = d3.select(this);
-    var state_val = state.property("value");
+    var state_val = state.prop("value");
     var path = 'all_by_state/' + state_val + '.csv';
 
     var month_val = localStorage.getItem('month');
     var month = (month_val) ? month_val : '01';
 
     d3.selectAll(".selected_state").text(selected_state_name);
-    state.property("value", "");
+    state.prop("value", "");
 
     localStorage.setItem('path', path);
     localStorage.setItem('state', state_val);
@@ -29,12 +29,12 @@ d3.select('#state').on('change', function() {
 d3.select('#month').on('change', function() {
     var selected_month_name = this.options[this.selectedIndex].innerHTML;
     var month = d3.select(this);
-    var month_val = month.property("value");
+    var month_val = month.prop("value");
 
     localStorage.setItem('month', month_val);
 
     d3.selectAll(".selected_month").text(selected_month_name);
-    month.property("value", "");
+    month.prop("value", "");
 
     render();
 });
@@ -49,7 +49,7 @@ var render = _.throttle(function() {
     var path = localStorage.getItem('path');
     var month = localStorage.getItem('month');
     var state_storage = localStorage.getItem('state-name');
-    var state_name = state_storage === 'US' ? 'the ' + state_storage : state_storage;
+    var state_name = (state_storage === 'US') ? 'the ' + state_storage : state_storage;
     var width = window.innerWidth - 100 - margins.right - margins.left;
 
     d3.csv(path, function(data) {
@@ -163,6 +163,8 @@ var render = _.throttle(function() {
         /* Avg Temp Month */
         d3.select("#hottest").text(month_temp_max_min_value.max[4].value);
         d3.select("#hottest-year").text(month_temp_max_min_value.max[4].year);
+        d3.select("#least-hottest").text(month_temp_max_min_value.min[0].value);
+        d3.select("#least-hottest-year").text(month_temp_max_min_value.min[0].year);
 
         var temp_svg = showAxises("#temps_div", "#avg_temp_line", width, xAxis, month_tempYAxis, "Avg. Temperature (F)");
         var temp_line = lineGenerator(xScale, month_temp_yScale, 'value');
@@ -189,6 +191,8 @@ var render = _.throttle(function() {
         /* Max Temp */
         d3.select("#maxtemp").text(month_max_max_min_value.max[4].value);
         d3.select("#maxtemp-year").text(month_max_max_min_value.max[4].year);
+        d3.select("#least-maxtemp").text(month_max_max_min_value.min[0].value);
+        d3.select("#least-maxtemp-year").text(month_max_max_min_value.min[0].year);
 
         var max_svg = showAxises("#max_div", "#max_temp", width, xAxis, month_maxYAxis, "Avg. Max. Temperature (F)");
         var max_line = lineGenerator(xScale, month_max_yScale, 'value');
@@ -204,6 +208,8 @@ var render = _.throttle(function() {
         /* Min Temp */
         d3.select("#mintemp").text(month_min_max_min_value.max[4].value);
         d3.select("#mintemp-year").text(month_min_max_min_value.max[4].year);
+        d3.select("#least-mintemp").text(month_min_max_min_value.min[0].value);
+        d3.select("#least-mintemp-year").text(month_min_max_min_value.min[0].year);
 
         var min_svg = showAxises("#min_div", "#min_temp", width, xAxis, month_minYAxis, "Avg. Min. Temperature (F)");
         var min_line = lineGenerator(xScale, month_min_yScale, 'value');
@@ -220,6 +226,8 @@ var render = _.throttle(function() {
         /* Precip */
         d3.select("#wettest").text(month_precip_max_min_value.max[4].value);
         d3.select("#wettest-year").text(month_precip_max_min_value.max[4].year);
+        d3.select("#least-wettest").text(month_precip_max_min_value.min[0].value);
+        d3.select("#least-wettest-year").text(month_precip_max_min_value.min[0].year);
 
         var precip_svg = showAxises("#precip_div", "#avg_precip", width, xAxis, month_precipYAxis, "Avg. Precipitation (Inches)");
         var precip_line = lineGenerator(xScale, month_precip_yScale, 'value');
@@ -245,6 +253,8 @@ var render = _.throttle(function() {
         drawStrip("#precip_div", tip_precip, precip_strip_color, precip_strip_scale, month_precip_filtered);
 
         /* Palmer Drought Index */
+        d3.select("#least-driest").text(month_drought_max_min_value.max[4].value);
+        d3.select("#least-driest-year").text(month_drought_max_min_value.max[4].year);
         d3.select("#driest").text(month_drought_max_min_value.min[0].value);
         d3.select("#driest-year").text(month_drought_max_min_value.min[0].year);
 
@@ -293,7 +303,7 @@ var render = _.throttle(function() {
                 .on("mouseover", function() { focus.style("display", null); })
                 .on("mouseout", function() { focus.style("display", "none"); })
                 .on("mousemove", mousemove)
-                .attr("transform", "translate(" + margin.left+ "," + margin.top + ")");
+                .translate([margins.left, margins.top]);
 
             return svg_element;
         }
@@ -329,12 +339,11 @@ var render = _.throttle(function() {
         }
 
         function appendPath(svg, id, color) {
-            svg.append("path")
-                .attr("id", id)
+            svg.append("path#" + id)
                 .attr("fill", "none")
                 .attr("stroke", color)
                 .attr("stroke-width", 2)
-                .attr("transform", "translate(" + margins.left + "," + margins.top + ")");
+                .translate([margins.left, margins.top]);
 
             return svg;
         }
@@ -346,7 +355,7 @@ var render = _.throttle(function() {
                 .attr("d", scale(data));
         }
     });
-}, 200);
+}, 400);
 
 
 /**
@@ -446,7 +455,7 @@ function barWidth(width, data) {
 function yScale(data, height) {
     var y_scale =  d3.scale.linear().range([0, height]);
 
-    return y_scale.domain([d3.max(data, function(d) { return d.value; }), 0])
+    return y_scale.domain([d3.max(data, ƒ('value')), 0])
 }
 
 /**
@@ -457,7 +466,7 @@ function yScale(data, height) {
  */
 function yScaleAnomaly(data, height) {
     return d3.scale.linear()
-        .domain(d3.extent(data, function(d) { return d.anomaly; }))
+        .domain(d3.extent(data, ƒ('anomaly')))
         .range([0, height]);
 }
 
@@ -505,22 +514,21 @@ function getAxis(scale, orientation) {
  * @returns {*}
  */
 function showAxises(selector, svg_selector, width, xAxis, yAxis, text) {
-    var svg = d3.select(selector).append('svg');
+    var svg = d3.select(selector).append('svg.svg');
 
     svg.attr("width", width + margins.left + margins.right)
         .attr("height", height + margins.top + margins.bottom)
-        .attr("id", svg_selector)
-        .attr("class", "svg")
+        .attr("id", svg_selector);
 
     svg.append("g")
         .attr("class", "x axis")
-        .attr("transform", "translate("+ margins.left + "," + (height + margins.top) + ")")
+        .translate([margins.left, (height + margins.top)]);
 
     d3.selectAll(selector + " g.x").call(xAxis);
 
     svg.append("g")
         .attr("class", "y axis")
-        .attr("transform", "translate(" + margins.left + "," + margins.top + ")")
+        .translate([margins.left, margins.top]);
 
     d3.selectAll(selector + " g.y").call(yAxis);
 
