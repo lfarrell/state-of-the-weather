@@ -57,13 +57,9 @@ div.tooltip ul {
     pointer-events: all;
 }
 
-.focus circle {
-    fill: none;
+.focus line {
     stroke: white;
-}
-
-g.focus text {
-    font-size: 1.1em;
+    stroke-width: 2;
 }
 
 /* D3 tip CSS */

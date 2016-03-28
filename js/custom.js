@@ -181,7 +181,7 @@ var render = _.throttle(function() {
         drawPath("#temp_avg_line", temp_avg_line, month_temp_filtered);
 
         // hover over
-        focusHover(temp_svg, month_temp_filtered, month_temp_yScale, "#temps_div", "degrees");
+        focusHover(temp_svg, month_temp_filtered, "#temps_div", "degrees");
 
         // Add temp strip chart
         var month_temp_strip_scale = stripScale(month_temp_filtered, 'anomaly');
@@ -215,7 +215,7 @@ var render = _.throttle(function() {
         drawPath("#max_avg_line", max_avg_line, month_max_filtered);
 
         // hover over
-        focusHover(max_svg, month_max_filtered, month_max_yScale, "#max_div", "degrees");
+        focusHover(max_svg, month_max_filtered, "#max_div", "degrees");
 
         /* Min Temp */
         d3.select("#mintemp").text(month_min_max_min_value.max[4].value);
@@ -235,7 +235,7 @@ var render = _.throttle(function() {
         drawPath("#min_avg_line", min_avg_line, month_min_filtered);
 
         // hover over
-        focusHover(min_svg, month_min_filtered, month_min_yScale, "#min_div", "degrees");
+        focusHover(min_svg, month_min_filtered, "#min_div", "degrees");
 
         /* Precip */
         d3.select("#wettest").text(month_precip_max_min_value.max[4].value);
@@ -264,7 +264,7 @@ var render = _.throttle(function() {
         });
 
         // hover over
-        focusHover(precip_svg, month_precip_filtered, month_precip_yScale, "#precip_div", "inches");
+        focusHover(precip_svg, month_precip_filtered, "#precip_div", "inches");
 
         // Precip strip plot
         var precip_strip_color = stripColors(precip_colors);
@@ -367,19 +367,20 @@ var render = _.throttle(function() {
          * @param chart
          * @returns {CSSStyleDeclaration}
          */
-        function focusHover(chart, data, yScale, selector, type) {
+        function focusHover(chart, data, selector, type) {
             var focus = chart.append("g")
                 .attr("class", "focus")
                 .style("display", "none");
 
-            focus.append("circle")
+             focus.append("line")
                 .attr("class", "y0")
-                .attr("r", 4.5);
+                .attr({
+                    x1: 0,
+                    y1: 0,
+                    x2: 0,
+                    y2:height
 
-          /*  focus.append("text")
-                .attr("class", "y0")
-                .attr("x", 9)
-                .attr("dy", ".35em"); */
+                });
 
             chart.append("rect")
                 .attr("class", "overlay")
@@ -404,8 +405,8 @@ var render = _.throttle(function() {
                 if(d1 === undefined) d1 = Infinity;
                 var d = x0 - d0.key > d1.key - x0 ? d1 : d0;
 
-                var transform_values = [(xScale(parse_date(d.date)) + margins.left), (yScale(d.value) + margins.top)];
-                d3.select(selector + " circle.y0").translate(transform_values);
+                var transform_values = [(xScale(parse_date(d.date)) + margins.left), margins.top];
+                d3.select(selector + " line.y0").translate(transform_values);
 
                 div.transition()
                     .duration(100)
@@ -422,14 +423,6 @@ var render = _.throttle(function() {
                     )
                     .style("top", (d3.event.pageY-108)+"px")
                     .style("left", (d3.event.pageX-28)+"px");
-             /*   d3.select(selector + " text.y0").translate(transform_values)
-                    .tspans(
-                        '<h4 class="text-center">' + stringDate(month) + ' (' + d.year + ')</h4>' +
-
-                        "Historic Avg: " + d.mean +
-                        "Actual Avg: " + d.value +
-                        "Anomaly: " + d.anomaly
-                    );*/
             }
 
             return chart;
