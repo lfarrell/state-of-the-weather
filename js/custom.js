@@ -317,7 +317,7 @@ var render = _.throttle(function() {
                 .attr("width", bar_width)
                 .attr("y", 0)
                 .attr("height", 80)
-                .attr("transform", "translate(" + margins.left + ",0)")
+                .translate([margins.left, 0])
                 .style("fill", function(d) { return strip_color(strip_scale(d.anomaly)); })
                 .on('mouseover', function(d) {
                     d3.select(this).attr("height", 100);
@@ -385,14 +385,14 @@ var render = _.throttle(function() {
                 .attr("class", "overlay")
                 .attr("width", width)
                 .attr("height", height)
-                .on("mouseover", function() { focus.style("display", null); })
-                .on("mouseout", function() {
+                .on("mouseover touchstart", function() { focus.style("display", null); })
+                .on("mouseout touchend", function() {
                     focus.style("display", "none");
                     div.transition()
                         .duration(250)
                         .style("opacity", 0);
                 })
-                .on("mousemove", mousemove)
+                .on("mousemove touchmove", mousemove)
                 .translate([margins.left, margins.top]);
 
             function mousemove() {
