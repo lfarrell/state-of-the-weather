@@ -66,27 +66,6 @@ var render = _.throttle(function() {
         /* Sorting & Grouping Data */
         var avgs = avgValues(data);
 
-        // Sort by year & type plus min max values
-        var sorted = _.sortByOrder(data, ['year', 'month'], ['asc', 'asc']);
-
-        /*   var drought_filtered = dataFilter(sorted, 'drought', false, false);
-        var max_filtered = dataFilter(sorted, 'max', false, false);
-        var min_filtered = dataFilter(sorted, 'min', false, false);
-        var precip_filtered =  dataFilter(sorted, 'precip', false, false);
-        var temp_filtered = dataFilter(sorted, 'temp', false, false);
-
-        var drought_max_min_value = maxMin(drought_filtered, 'value');
-        var max_max_min_value = maxMin(max_filtered, 'value');
-        var min_max_min_value = maxMin(min_filtered, 'value');
-        var precip_max_min_value = maxMin(precip_filtered, 'value');
-        var temp_max_min_value = maxMin(temp_filtered, 'value');
-
-        var drought_max_min_anomaly = maxMin(drought_filtered, 'anomaly');
-        var max_max_min_anomaly = maxMin(max_filtered, 'anomaly');
-        var min_max_min_anomaly = maxMin(min_filtered, 'anomaly');
-        var precip_max_min_anomaly = maxMin(precip_filtered, 'anomaly');
-        var temp_max_min_anomaly = maxMin(temp_filtered, 'anomaly'); */
-
         // Sort by month and type plus min max values
         var month_sorted =  _.sortByOrder(data, ['month', 'year'], ['asc', 'asc']);
 
@@ -102,12 +81,6 @@ var render = _.throttle(function() {
         var month_precip_max_min_value = maxMin(month_precip_filtered, 'value');
         var month_temp_max_min_value = maxMin(month_temp_filtered, 'value');
 
-    /*    var month_drought_max_min_anomaly = maxMin(month_drought_filtered, 'anomaly');
-        var month_max_max_min_anomaly = maxMin(month_max_filtered, 'anomaly');
-        var month_min_max_min_anomaly = maxMin(month_min_filtered, 'anomaly');
-        var month_precip_max_min_anomaly = maxMin(month_precip_filtered, 'anomaly');
-        var month_temp_max_min_anomaly = maxMin(month_temp_filtered, 'anomaly'); */
-
         /* Bisect data */
         var bisectDate = d3.bisector(function(d) { return parse_date(d.date); }).right;
 
@@ -115,12 +88,6 @@ var render = _.throttle(function() {
         var xScale = d3.time.scale()
             .domain(d3.extent(data, function(d) { return parse_date(d.date); }))
             .range([0, width]);
-
-     /*   var drought_yScale = yScale(drought_filtered, height);
-        var max_yScale = yScale(max_filtered, height);
-        var min_yScale = yScale(min_filtered, height);
-        var precip_yScale = yScale(precip_filtered, height);
-        var temp_yScale = yScale(temp_filtered, height); */
 
         var month_drought_yScale = yScale(month_drought_filtered, height);
         var month_max_yScale = yScale(month_max_filtered, height);
@@ -130,11 +97,6 @@ var render = _.throttle(function() {
 
         /* Axises */
         var xAxis = getAxis(xScale, "bottom");
-
-   /*     var maxYAxis = getAxis(max_yScale, "left");
-        var minYAxis = getAxis(min_yScale, "left");
-        var precipYAxis = getAxis(precip_yScale, "left");
-        var tempYAxis = getAxis(temp_yScale, "left"); */
 
         var month_maxYAxis = getAxis(month_max_yScale, "left");
         var month_minYAxis = getAxis(month_min_yScale, "left");
@@ -149,20 +111,6 @@ var render = _.throttle(function() {
 
         /* Avg Temp Year */
         var temp_strip_color = stripColors(temp_colors);
-      /*  var temp_strip_scale = stripScale(temp_filtered, 'anomaly');
-
-        d3.select("#avg_temp")
-            .attr("width", width + margins.left + margins.right)
-            .attr("height", 110)
-            .selectAll("bar")
-            .data(temp_filtered).enter().append("rect")
-            .attr("x", function(d) { return xScale(parse_date(d.date)); })
-            .attr("width", bar_width)
-            .attr("y",  10)
-            .attr("height", 100)
-            .attr("transform", "translate(" + margins.left + "," + margins.top + ")")
-            .style("fill", function(d) { return temp_strip_color(temp_strip_scale(d.anomaly)); })
-            .on("mouseover", function(d) { console.log(d.anomaly, d.date); }); */
 
         /* Avg Temp Month */
         d3.select("#hottest").text(month_temp_max_min_value.max[4].value);
