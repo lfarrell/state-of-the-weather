@@ -170,7 +170,7 @@ var render = _.throttle(function() {
         d3.select("#least-hottest").text(month_temp_max_min_value.min[0].value);
         d3.select("#least-hottest-year").text(month_temp_max_min_value.min[0].year);
 
-        var temp_svg = showAxises("#temps_div", "#avg_temp_line", width, xAxis, month_tempYAxis, "Avg. Temperature (F)");
+        var temp_svg = showAxises("#temp_div", "#avg_temp_line", width, xAxis, month_tempYAxis, "Avg. Temperature (F)");
         var temp_line = lineGenerator(xScale, month_temp_yScale, 'value');
         var temp_avg_line = lineGenerator(xScale, month_temp_yScale, 'mean');
         temp_svg = appendPath(temp_svg, "temp_line", "steelblue");
@@ -181,7 +181,7 @@ var render = _.throttle(function() {
         drawPath("#temp_avg_line", temp_avg_line, month_temp_filtered);
 
         // hover over
-        focusHover(temp_svg, month_temp_filtered, "#temps_div", "degrees");
+        focusHover(temp_svg, month_temp_filtered, "#temp_div", "degrees");
 
         // Add temp strip chart
         var month_temp_strip_scale = stripScale(month_temp_filtered, 'anomaly');
@@ -195,7 +195,7 @@ var render = _.throttle(function() {
                 '</ul>';
         });
 
-        drawStrip("#temps_div", tip_temp, temp_strip_color, month_temp_strip_scale, month_temp_filtered);
+        drawStrip("#temp_div", tip_temp, temp_strip_color, month_temp_strip_scale, month_temp_filtered);
 
         /* Max Temp */
         d3.select("#maxtemp").text(month_max_max_min_value.max[4].value);
@@ -368,6 +368,7 @@ var render = _.throttle(function() {
          * @returns {CSSStyleDeclaration}
          */
         function focusHover(chart, data, selector, type) {
+            var weather_type = selector.split('_')[0].substr(1);
             var focus = chart.append("g")
                 .attr("class", "focus")
                 .style("display", "none");
@@ -415,7 +416,7 @@ var render = _.throttle(function() {
                 div.html(
                         '<h4 class="text-center">' + stringDate(d.month) + ' (' + d.year + ')</h4>' +
                             '<ul class="list-unstyled"' +
-                            '<li>Historical Avg: ' + monthAvg(avgs, 'temp', month) + ' ' + type + '</li>' +
+                            '<li>Historical Avg: ' + monthAvg(avgs, weather_type, month) + ' ' + type + '</li>' +
                             '<li>Actual Avg: ' + d.value + ' ' + type + '</li>' +
                             '<li>Departure from Avg: ' + d.anomaly + ' ' + type + '</li>' +
                             '</ul>'
