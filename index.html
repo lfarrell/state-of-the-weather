@@ -8,7 +8,6 @@
     <title>US Temperatures</title>
     <link href='https://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-   <!-- <link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css"> -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -106,15 +105,17 @@
         </div>
     </div>
     <div class="row charts">
-        <div id="temps_div" class="col-sm-12 col-lg-12">
+        <div id="temp_div" class="col-sm-12 col-lg-12">
             <h2 class="text-center">Selected Area: <span class="selected_state">Contiguous U.S.</span>
                 (<span class="selected_month">January</span>)</h2>
             <h3 class="text-center">Average Temperature</h3>
-            <p class="col-md-offset-1">The hottest daily average temperature for <span class="selected-state"></span>
+            <p class="col-md-offset-1">As might be expected, average temperatures vary widely across the United States.
+            Geography isn't the only reason that temperatures have varied. Notice that over the last few years much of the west has
+                been well above average compared to the east. While, in December 2015 the situation was reversed and much
+            of the east had significantly above average temperatures.</p>
+            <p class="col-md-offset-1">Overall, The hottest daily average temperature for <span class="selected-state"></span>
                 in <span class="selected-month"></span> was in <span id="hottest-year"></span>
-                when the average temperature was <span id="hottest"></span> degrees.
-            </p>
-            <p class="col-md-offset-1">The coolest daily average temperature for <span class="selected-state"></span>
+                when the average temperature was <span id="hottest"></span> degrees.The coolest daily average temperature for <span class="selected-state"></span>
                 in <span class="selected-month"></span> was in <span id="least-hottest-year"></span>
                 when the average temperature was <span id="least-hottest"></span> degrees.
             </p>
@@ -124,8 +125,7 @@
             <p class="col-md-offset-1">The hottest maximum daily average temperature for <span class="selected-state"></span>
                 in <span class="selected-month"></span> was in <span id="maxtemp-year"></span> when the
                 average maximum temperature was <span id="maxtemp"></span> degrees.
-            </p>
-            <p class="col-md-offset-1">The coolest maximum daily average temperature for <span class="selected-state"></span>
+            The coolest maximum daily average temperature for <span class="selected-state"></span>
                 in <span class="selected-month"></span> was in <span id="least-maxtemp-year"></span> when the
                 average maximum temperature was <span id="least-maxtemp"></span> degrees.
             </p>
@@ -135,8 +135,7 @@
             <p class="col-md-offset-1">The hottest minimum daily average temperature for <span class="selected-state"></span>
                 in <span class="selected-month"></span> was
                 in <span id="mintemp-year"></span> when the average minimum temperature was <span id="mintemp"></span> degrees.
-            </p>
-            <p class="col-md-offset-1">The coldest minimum daily average temperature for <span class="selected-state"></span>
+            The coldest minimum daily average temperature for <span class="selected-state"></span>
                 in <span class="selected-month"></span> on record was
                 in <span id="least-mintemp-year"></span> when the average minimum temperature was <span id="least-mintemp"></span> degrees.
             </p>
@@ -146,8 +145,7 @@
             <p class="col-md-offset-1">The wettest <span class="selected-month"></span> on record was in
                  <span id="wettest-year"></span> when an average of <span id="wettest"></span> inches of rain
                 fell across <span class="selected-state"></span>.
-            </p>
-            <p class="col-md-offset-1">The driest <span class="selected-month"></span> on record was in
+            The driest <span class="selected-month"></span> on record was in
                 <span id="least-wettest-year"></span> when an average of <span id="least-wettest"></span> inches of rain
                 fell across <span class="selected-state"></span>.
             </p>
@@ -156,8 +154,7 @@
             <h3 class="text-center">Average Drought</h3>
             <p class="col-md-offset-1">The least drought ridden <span class="selected-month"></span> on record in <span class="selected-state"></span>
                 was <span id="least-driest-year"></span> when the Palmer Drought Index was <span id="least-driest"></span>.
-            </p>
-            <p class="col-md-offset-1">The deepest drought for <span class="selected-month"></span> on record in <span class="selected-state"></span>
+            The deepest drought for <span class="selected-month"></span> on record in <span class="selected-state"></span>
                 was <span id="driest-year"></span> when the Palmer Drought Index was <span id="driest"></span>.
             </p>
         </div>

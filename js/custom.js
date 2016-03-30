@@ -218,6 +218,7 @@ var render = _.throttle(function() {
         var precip_strip_color = stripColors(precip_colors);
         var precip_strip_scale = stripScale(month_precip_filtered, 'anomaly');
 
+        drawLegend("#precip_div", precip_colors, month_precip_filtered, "anomaly");
         drawStrip("#precip_div", tip_precip, precip_strip_color, precip_strip_scale, month_precip_filtered);
 
         /* Palmer Drought Index */
@@ -504,6 +505,38 @@ function stripScale(values, type) {
     return d3.scale.linear().domain(d3.extent(values, function(d) {
         return d[type];
     })).range([0,1]);
+}
+
+/**
+ * Draw a legend
+ * @param selector
+ * @param color_values
+ * @param values
+ * @param type
+ * @returns {*}
+ */
+function drawLegend(selector, color_values, values, type) {
+    var colors = stripColors(color_values);
+    var counts = stripScale(values, type);
+    var class_name = selector.substr(1);
+    var svg = d3.select(selector).append("svg")
+        .attr("class", "svg")
+    .attr("width", 1000);
+
+    svg.append("g")
+        .attr("class", "legend-" + class_name)
+        .attr("width", 1000)
+        .translate([margins.left, margins.top]);
+
+    var legend = d3.legend.color()
+        .shapeWidth(60)
+        .orient('horizontal')
+        .scale(colors);
+
+    svg.select(".legend-" + class_name)
+        .call(legend);
+
+    return svg;
 }
 
 /**
