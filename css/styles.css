@@ -25,6 +25,11 @@ text {
     fill: white;
 }
 
+text.label {
+    font-size: 85%;
+    stroke: none;
+}
+
 #temp_avg_line,
 #max_avg_line,
 #min_avg_line,
@@ -60,6 +65,10 @@ div.tooltip ul {
 .focus line {
     stroke: white;
     stroke-width: 2;
+}
+
+.legend {
+    margin-bottom: -50px;
 }
 
 /* D3 tip CSS */

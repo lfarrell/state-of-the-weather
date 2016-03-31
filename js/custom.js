@@ -110,7 +110,7 @@ var render = _.throttle(function() {
         d3.selectAll(".selected-state").text(state_name);
 
         /* Avg Temp Year */
-        var temp_strip_color = stripColors(temp_colors);
+        var temp_strip_color = stripColors(temp_colors, month_temp_filtered, "temp");
 
         /* Avg Temp Month */
         d3.select("#hottest").text(month_temp_max_min_value.max[4].value);
@@ -143,6 +143,7 @@ var render = _.throttle(function() {
                 '</ul>';
         });
 
+        drawLegend("#temp_div", temp_colors, month_temp_filtered, "anomaly");
         drawStrip("#temp_div", tip_temp, temp_strip_color, month_temp_strip_scale, month_temp_filtered);
 
         /* Max Temp */
@@ -215,7 +216,7 @@ var render = _.throttle(function() {
         focusHover(precip_svg, month_precip_filtered, "#precip_div", "inches");
 
         // Precip strip plot
-        var precip_strip_color = stripColors(precip_colors);
+        var precip_strip_color = stripColors(precip_colors, month_precip_filtered, "precip");
         var precip_strip_scale = stripScale(month_precip_filtered, 'anomaly');
 
         drawLegend("#precip_div", precip_colors, month_precip_filtered, "anomaly");
@@ -227,6 +228,7 @@ var render = _.throttle(function() {
         d3.select("#driest").text(month_drought_max_min_value.min[0].value);
         d3.select("#driest-year").text(month_drought_max_min_value.min[0].year);
 
+        var palmer_strip_color = stripColors(precip_colors, month_drought_filtered, "drought");
         var palmer_strip_scale = stripScale(month_drought_filtered, 'anomaly');
 
         var tip_palmer = d3.tip().attr('class', 'd3-tip').html(function(d) {
@@ -238,7 +240,8 @@ var render = _.throttle(function() {
                 '</ul>';
         });
 
-        drawStrip("#drought_div", tip_palmer, precip_strip_color, palmer_strip_scale, month_drought_filtered);
+        drawLegend("#drought_div", precip_colors, month_drought_filtered, "anomaly");
+        drawStrip("#drought_div", tip_palmer, palmer_strip_color, palmer_strip_scale, month_drought_filtered);
 
 
         /**
@@ -267,7 +270,7 @@ var render = _.throttle(function() {
                 .attr("y", 0)
                 .attr("height", 80)
                 .translate([margins.left, 0])
-                .style("fill", function(d) { return strip_color(strip_scale(d.anomaly)); })
+                .style("fill", function(d) { return strip_color(d.anomaly); })
                 .on('mouseover', function(d) {
                     d3.select(this).attr("height", 100);
                     tip.show.call(this, d);
@@ -416,7 +419,7 @@ function dataFilter(datas, type, month, avgs) {
  * @returns {*}
  */
 function monthAvg(avgs, field, month) {
-    return avgs[field][parseInt(month,10) - 1].value.toFixed(1);
+    return avgs[field][parseInt(month,10) - 1].value.toFixed(2);
 }
 
 /**
@@ -487,11 +490,14 @@ function yScale(data, height) {
 /**
  * Color codes for strip charts
  * @param values
+ * @param data
+ * @param type
  * @returns {*}
  */
-function stripColors(values) {
+function stripColors(values, data, type) {
+    console.log(type, d3.extent(data, function(d) { return d.anomaly; }))
     return d3.scale.quantize()
-        .domain(d3.range(0, 1, 1.0 / (values.length - 1)))
+        .domain(d3.extent(data, function(d) { return d.anomaly; }))
         .range(values);
 }
 
@@ -516,12 +522,13 @@ function stripScale(values, type) {
  * @returns {*}
  */
 function drawLegend(selector, color_values, values, type) {
-    var colors = stripColors(color_values);
-    var counts = stripScale(values, type);
+    var colors = stripColors(color_values, values, type);
+   // var counts = stripScale(values, type);
     var class_name = selector.substr(1);
     var svg = d3.select(selector).append("svg")
-        .attr("class", "svg")
-    .attr("width", 1000);
+        .classed("svg", true)
+        .classed("legend", true)
+        .attr("width", 1000);
 
     svg.append("g")
         .attr("class", "legend-" + class_name)
