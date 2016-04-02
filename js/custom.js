@@ -84,10 +84,10 @@ var render = _.debounce(function() {
 
         /* Scales */
         var xScale = d3.time.scale()
-            .domain(d3.extent(data, function(d) { return parse_date(d.date); }))
+            .domain(d3.extent(data, _.compose(parse_date, ƒ('date'))))
             .range([0, width]);
 
-        var month_drought_yScale = yScale(month_drought_filtered, height);
+    //    var month_drought_yScale = yScale(month_drought_filtered, height);
         var month_max_yScale = yScale(month_max_filtered, height);
         var month_min_yScale = yScale(month_min_filtered, height);
         var month_precip_yScale = yScale(month_precip_filtered, height);
@@ -130,8 +130,6 @@ var render = _.debounce(function() {
         focusHover(temp_svg, month_temp_filtered, "#temp_div", "degrees");
 
         // Add temp strip chart
-        var month_temp_strip_scale = stripScale(month_temp_filtered, 'anomaly');
-
         var tip_temp = d3.tip().attr('class', 'd3-tip').html(function(d) {
             return '<h4 class="text-center">' + stringDate(month) + '(' + d.year + ')</h4>' +
                 '<ul class="list-unstyled">' +
@@ -142,7 +140,7 @@ var render = _.debounce(function() {
         });
 
         drawLegend("#temp_div", temp_colors, month_temp_filtered, "anomaly");
-        drawStrip("#temp_div", tip_temp, temp_strip_color, month_temp_strip_scale, month_temp_filtered);
+        drawStrip("#temp_div", tip_temp, temp_strip_color, month_temp_filtered);
 
         /* Max Temp */
         d3.select("#maxtemp").text(month_max_max_min_value.max[4].value);
@@ -174,10 +172,9 @@ var render = _.debounce(function() {
                 '</ul>';
         });
         var max_strip_color = stripColors(temp_colors, month_max_filtered, "max");
-        var month_max_strip_scale = stripScale(month_max_filtered, 'anomaly');
 
         drawLegend("#max_div", temp_colors, month_max_filtered, "anomaly");
-        drawStrip("#max_div", tip_max, max_strip_color, month_max_strip_scale, month_max_filtered);
+        drawStrip("#max_div", tip_max, max_strip_color, month_max_filtered);
 
         /* Min Temp */
         d3.select("#mintemp").text(month_min_max_min_value.max[4].value);
@@ -209,10 +206,9 @@ var render = _.debounce(function() {
                 '</ul>';
         });
         var min_strip_color = stripColors(temp_colors, month_min_filtered, "min");
-        var month_min_strip_scale = stripScale(month_min_filtered, 'anomaly');
 
         drawLegend("#min_div", temp_colors, month_min_filtered, "anomaly");
-        drawStrip("#min_div", tip_min, min_strip_color, month_min_strip_scale, month_min_filtered);
+        drawStrip("#min_div", tip_min, min_strip_color, month_min_filtered);
 
         /* Precip */
         d3.select("#wettest").text(month_precip_max_min_value.max[4].value);
@@ -245,10 +241,9 @@ var render = _.debounce(function() {
 
         // Precip strip plot
         var precip_strip_color = stripColors(precip_colors, month_precip_filtered, "precip");
-        var precip_strip_scale = stripScale(month_precip_filtered, 'anomaly');
 
         drawLegend("#precip_div", precip_colors, month_precip_filtered, "anomaly");
-        drawStrip("#precip_div", tip_precip, precip_strip_color, precip_strip_scale, month_precip_filtered);
+        drawStrip("#precip_div", tip_precip, precip_strip_color, month_precip_filtered);
 
         /* Palmer Drought Index */
         d3.select("#least-driest").text(month_drought_max_min_value.max[4].value);
@@ -257,7 +252,6 @@ var render = _.debounce(function() {
         d3.select("#driest-year").text(month_drought_max_min_value.min[0].year);
 
         var palmer_strip_color = stripColors(precip_colors, month_drought_filtered, "drought");
-        var palmer_strip_scale = stripScale(month_drought_filtered, 'anomaly');
 
         var tip_palmer = d3.tip().attr('class', 'd3-tip').html(function(d) {
             return '<h4 class="text-center">' + stringDate(month) + ' (' + d.year + ')</h4>' +
@@ -268,8 +262,8 @@ var render = _.debounce(function() {
                 '</ul>';
         });
 
-        drawLegend("#drought_div", precip_colors, month_drought_filtered, "anomaly");
-        drawStrip("#drought_div", tip_palmer, palmer_strip_color, palmer_strip_scale, month_drought_filtered);
+        drawLegend("#drought_div", precip_colors, month_drought_filtered, "value");
+        drawStrip("#drought_div", tip_palmer, palmer_strip_color, month_drought_filtered);
 
 
         /**
@@ -277,11 +271,10 @@ var render = _.debounce(function() {
          * @param selector
          * @param tip
          * @param strip_color
-         * @param strip_scale
          * @param data
          * @returns {string|CanvasPixelArray|function({data: (String|Blob|ArrayBuffer)})|Object[]|string}
          */
-        function drawStrip(selector, tip, strip_color, strip_scale, data) {
+        function drawStrip(selector, tip, strip_color, data) {
             var strip = d3.select(selector).append("svg")
                 .attr("width", width + margins.left + margins.right)
                 .attr("height", 110)
@@ -298,7 +291,7 @@ var render = _.debounce(function() {
                 .attr("y", 0)
                 .attr("height", 80)
                 .translate([margins.left, 0])
-                .style("fill", function(d) { return strip_color(d.anomaly); })
+                .style("fill", _.compose(strip_color, ƒ('anomaly')))
                 .on('mouseover', function(d) {
                     d3.select(this).attr("height", 100);
                     tip.show.call(this, d);
@@ -322,7 +315,7 @@ var render = _.debounce(function() {
             svg.append("path#" + id)
                 .attr("fill", "none")
                 .attr("stroke", color)
-                .attr("stroke-width", 2)
+                .attr("stroke-width", 2.5)
                 .translate([margins.left, margins.top]);
 
             return svg;
@@ -524,22 +517,10 @@ function yScale(data, height) {
  * @param type
  * @returns {*}
  */
-function stripColors(values, data, type) {
+function stripColors(values, data) {
     return d3.scale.quantize()
-        .domain(d3.extent(data, function(d) { return d.anomaly; }))
+        .domain(d3.extent(data, ƒ('anomaly')))
         .range(values);
-}
-
-/**
- * Scales for strip charts
- * @param values
- * @param type
- * @returns {*}
- */
-function stripScale(values, type) {
-    return d3.scale.linear().domain(d3.extent(values, function(d) {
-        return d[type];
-    })).range([0,1]);
 }
 
 /**
@@ -551,8 +532,11 @@ function stripScale(values, type) {
  * @returns {*}
  */
 function drawLegend(selector, color_values, values, type) {
+    d3.select(selector).append("h4")
+        .attr("class", "text-center")
+        .text("Departure from Average");
+
     var colors = stripColors(color_values, values, type);
-   // var counts = stripScale(values, type);
     var class_name = selector.substr(1);
     var svg = d3.select(selector).append("svg")
         .classed("svg", true)
@@ -561,12 +545,13 @@ function drawLegend(selector, color_values, values, type) {
 
     svg.append("g")
         .attr("class", "legend-" + class_name)
-        .attr("width", 1000)
+        .attr("width", 900)
         .translate([margins.left, margins.top]);
 
     var legend = d3.legend.color()
-        .shapeWidth(60)
+        .shapeWidth(70)
         .orient('horizontal')
+        .labelFormat(d3.format(".02f"))
         .scale(colors);
 
     svg.select(".legend-" + class_name)
