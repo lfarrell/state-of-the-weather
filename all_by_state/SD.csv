@@ -120,6 +120,7 @@ year,value,anomaly,month,state,type
 2013,-3.8,-4.74,01,SD,drought
 2014,4.49,3.55,01,SD,drought
 2015,4.23,3.29,01,SD,drought
+2016,3.56,2.62,01,SD,drought
 1895,1.33,0.45,02,SD,drought
 1896,1.31,0.43,02,SD,drought
 1897,4.29,3.41,02,SD,drought
@@ -241,6 +242,7 @@ year,value,anomaly,month,state,type
 2013,-3.36,-4.24,02,SD,drought
 2014,4.29,3.41,02,SD,drought
 2015,3.76,2.88,02,SD,drought
+2016,3.34,2.46,02,SD,drought
 1895,1.98,1.25,03,SD,drought
 1896,1.78,1.05,03,SD,drought
 1897,5.15,4.42,03,SD,drought
@@ -1694,6 +1696,7 @@ year,value,anomaly,month,state,type
 2013,33.8,2.9,02,SD,max
 2014,25.3,-5.6,02,SD,max
 2015,32,1.1,02,SD,max
+2016,40.9,10.0,02,SD,max
 1895,42.6,0.6,03,SD,max
 1896,33.5,-8.5,03,SD,max
 1897,31.1,-10.9,03,SD,max
@@ -3025,7 +3028,7 @@ year,value,anomaly,month,state,type
 2013,9.2,5.0,01,SD,min
 2014,6.4,2.2,01,SD,min
 2015,12.2,8.0,01,SD,min
-2016,11,6.8,01,SD,min
+2016,11.1,6.9,01,SD,min
 1895,1.2,-7.6,02,SD,min
 1896,11.3,2.5,02,SD,min
 1897,4.5,-4.3,02,SD,min
@@ -3147,6 +3150,7 @@ year,value,anomaly,month,state,type
 2013,13.7,4.9,02,SD,min
 2014,2.5,-6.3,02,SD,min
 2015,7,-1.8,02,SD,min
+2016,21.5,12.7,02,SD,min
 1895,15.3,-4.4,03,SD,min
 1896,10,-9.7,03,SD,min
 1897,11.2,-8.5,03,SD,min
@@ -4478,6 +4482,7 @@ year,value,anomaly,month,state,type
 2013,.45,-0.02,01,SD,precip
 2014,.24,-0.23,01,SD,precip
 2015,.27,-0.20,01,SD,precip
+2016,.26,-0.21,01,SD,precip
 1895,.69,0.15,02,SD,precip
 1896,.63,0.09,02,SD,precip
 1897,.79,0.25,02,SD,precip
@@ -4599,6 +4604,7 @@ year,value,anomaly,month,state,type
 2013,.7,0.16,02,SD,precip
 2014,.36,-0.18,02,SD,precip
 2015,.34,-0.20,02,SD,precip
+2016,.53,-0.01,02,SD,precip
 1895,1.03,-0.02,03,SD,precip
 1896,1.63,0.58,03,SD,precip
 1897,2.01,0.96,03,SD,precip
@@ -5930,6 +5936,7 @@ year,value,anomaly,month,state,type
 2013,19.4,4.4,01,SD,temp
 2014,18.3,3.3,01,SD,temp
 2015,22.7,7.7,01,SD,temp
+2016,19.8,4.8,01,SD,temp
 1895,12.1,-7.8,02,SD,temp
 1896,24.1,4.2,02,SD,temp
 1897,15.1,-4.8,02,SD,temp
@@ -6051,6 +6058,7 @@ year,value,anomaly,month,state,type
 2013,23.8,3.9,02,SD,temp
 2014,13.9,-6.0,02,SD,temp
 2015,19.5,-0.4,02,SD,temp
+2016,31.2,11.3,02,SD,temp
 1895,29,-1.8,03,SD,temp
 1896,21.8,-9.0,03,SD,temp
 1897,21.1,-9.7,03,SD,temp

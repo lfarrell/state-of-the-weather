@@ -120,6 +120,7 @@ year,value,anomaly,month,state,type
 2013,-2.82,-2.84,01,AZ,drought
 2014,-2.25,-2.27,01,AZ,drought
 2015,-1.78,-1.80,01,AZ,drought
+2016,0,-0.02,01,AZ,drought
 1895,1.61,1.50,02,AZ,drought
 1896,-1.32,-1.43,02,AZ,drought
 1897,2.12,2.01,02,AZ,drought
@@ -240,7 +241,8 @@ year,value,anomaly,month,state,type
 2012,-2.94,-3.05,02,AZ,drought
 2013,-2.79,-2.90,02,AZ,drought
 2014,-3.06,-3.17,02,AZ,drought
-2015,-2.2,-2.31,02,AZ,drought
+2015,-2.19,-2.30,02,AZ,drought
+2016,-1.05,-1.16,02,AZ,drought
 1895,1.09,0.95,03,AZ,drought
 1896,-1.61,-1.75,03,AZ,drought
 1897,.03,-0.11,03,AZ,drought
@@ -1571,8 +1573,8 @@ year,value,anomaly,month,state,type
 2012,59.4,6.4,01,AZ,max
 2013,51.7,-1.3,01,AZ,max
 2014,61.4,8.4,01,AZ,max
-2015,57.2,4.2,01,AZ,max
-2016,54.4,1.4,01,AZ,max
+2015,57.1,4.1,01,AZ,max
+2016,54.2,1.2,01,AZ,max
 1895,56,-1.6,02,AZ,max
 1896,58.1,0.5,02,AZ,max
 1897,53.2,-4.4,02,AZ,max
@@ -1693,7 +1695,8 @@ year,value,anomaly,month,state,type
 2012,59.3,1.7,02,AZ,max
 2013,55.6,-2.0,02,AZ,max
 2014,64.3,6.7,02,AZ,max
-2015,66.2,8.6,02,AZ,max
+2015,66.1,8.5,02,AZ,max
+2016,66.8,9.2,02,AZ,max
 1895,64.7,1.6,03,AZ,max
 1896,64.6,1.5,03,AZ,max
 1897,57.3,-5.8,03,AZ,max
@@ -3024,8 +3027,8 @@ year,value,anomaly,month,state,type
 2012,31.2,2.9,01,AZ,min
 2013,25.6,-2.7,01,AZ,min
 2014,31.6,3.3,01,AZ,min
-2015,33.4,5.1,01,AZ,min
-2016,29.6,1.3,01,AZ,min
+2015,33.3,5.0,01,AZ,min
+2016,29.5,1.2,01,AZ,min
 1895,31,-0.8,02,AZ,min
 1896,32.5,0.7,02,AZ,min
 1897,30.5,-1.3,02,AZ,min
@@ -3146,7 +3149,8 @@ year,value,anomaly,month,state,type
 2012,31.9,0.1,02,AZ,min
 2013,28.9,-2.9,02,AZ,min
 2014,35.7,3.9,02,AZ,min
-2015,37.9,6.1,02,AZ,min
+2015,38,6.2,02,AZ,min
+2016,35,3.2,02,AZ,min
 1895,35.4,-0.4,03,AZ,min
 1896,38,2.2,03,AZ,min
 1897,33,-2.8,03,AZ,min
@@ -4478,6 +4482,7 @@ year,value,anomaly,month,state,type
 2013,1.3,0.16,01,AZ,precip
 2014,.03,-1.11,01,AZ,precip
 2015,1.79,0.65,01,AZ,precip
+2016,1.42,0.28,01,AZ,precip
 1895,.53,-0.62,02,AZ,precip
 1896,.22,-0.93,02,AZ,precip
 1897,1,-0.15,02,AZ,precip
@@ -4599,6 +4604,7 @@ year,value,anomaly,month,state,type
 2013,.51,-0.64,02,AZ,precip
 2014,.16,-0.99,02,AZ,precip
 2015,.64,-0.51,02,AZ,precip
+2016,.3,-0.85,02,AZ,precip
 1895,.22,-0.90,03,AZ,precip
 1896,.66,-0.46,03,AZ,precip
 1897,.77,-0.35,03,AZ,precip
@@ -5929,7 +5935,8 @@ year,value,anomaly,month,state,type
 2012,45.3,4.6,01,AZ,temp
 2013,38.6,-2.1,01,AZ,temp
 2014,46.5,5.8,01,AZ,temp
-2015,45.3,4.6,01,AZ,temp
+2015,45.2,4.5,01,AZ,temp
+2016,41.9,1.2,01,AZ,temp
 1895,43.5,-1.2,02,AZ,temp
 1896,45.3,0.6,02,AZ,temp
 1897,41.9,-2.8,02,AZ,temp
@@ -6051,6 +6058,7 @@ year,value,anomaly,month,state,type
 2013,42.2,-2.5,02,AZ,temp
 2014,50,5.3,02,AZ,temp
 2015,52.1,7.4,02,AZ,temp
+2016,50.9,6.2,02,AZ,temp
 1895,50.1,0.6,03,AZ,temp
 1896,51.3,1.8,03,AZ,temp
 1897,45.1,-4.4,03,AZ,temp

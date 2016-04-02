@@ -120,6 +120,7 @@ year,value,anomaly,month,state,type
 2013,1.2,1.29,01,MI,drought
 2014,2.49,2.58,01,MI,drought
 2015,3.25,3.34,01,MI,drought
+2016,.81,0.90,01,MI,drought
 1895,-.49,-0.44,02,MI,drought
 1896,-3.57,-3.52,02,MI,drought
 1897,3.31,3.36,02,MI,drought
@@ -241,6 +242,7 @@ year,value,anomaly,month,state,type
 2013,1.64,1.69,02,MI,drought
 2014,2.29,2.34,02,MI,drought
 2015,2.53,2.58,02,MI,drought
+2016,1.01,1.06,02,MI,drought
 1895,-1.29,-1.25,03,MI,drought
 1896,-3.62,-3.58,03,MI,drought
 1897,3.58,3.62,03,MI,drought
@@ -1572,7 +1574,7 @@ year,value,anomaly,month,state,type
 2013,30.7,4.6,01,MI,max
 2014,20.3,-5.8,01,MI,max
 2015,24.6,-1.5,01,MI,max
-2016,28.7,2.6,01,MI,max
+2016,28.9,2.8,01,MI,max
 1895,21.4,-6.9,02,MI,max
 1896,28,-0.3,02,MI,max
 1897,28.1,-0.2,02,MI,max
@@ -1694,6 +1696,7 @@ year,value,anomaly,month,state,type
 2013,28.8,0.5,02,MI,max
 2014,22.2,-6.1,02,MI,max
 2015,18.6,-9.7,02,MI,max
+2016,33.5,5.2,02,MI,max
 1895,34.2,-4.5,03,MI,max
 1896,32.2,-6.5,03,MI,max
 1897,35.5,-3.2,03,MI,max
@@ -3025,7 +3028,7 @@ year,value,anomaly,month,state,type
 2013,15.3,5.0,01,MI,min
 2014,4.2,-6.1,01,MI,min
 2015,8.5,-1.8,01,MI,min
-2016,15.7,5.4,01,MI,min
+2016,15.8,5.5,01,MI,min
 1895,1.6,-8.4,02,MI,min
 1896,10.6,0.6,02,MI,min
 1897,12.8,2.8,02,MI,min
@@ -3146,7 +3149,8 @@ year,value,anomaly,month,state,type
 2012,20.7,10.7,02,MI,min
 2013,12.9,2.9,02,MI,min
 2014,3.3,-6.7,02,MI,min
-2015,-2.4,-12.4,02,MI,min
+2015,-2.5,-12.5,02,MI,min
+2016,17.2,7.2,02,MI,min
 1895,11.4,-7.9,03,MI,min
 1896,13.2,-6.1,03,MI,min
 1897,16.8,-2.5,03,MI,min
@@ -4478,6 +4482,7 @@ year,value,anomaly,month,state,type
 2013,3.3,1.49,01,MI,precip
 2014,2.21,0.40,01,MI,precip
 2015,1.28,-0.53,01,MI,precip
+2016,1.76,-0.05,01,MI,precip
 1895,.83,-0.67,02,MI,precip
 1896,1.03,-0.47,02,MI,precip
 1897,1.41,-0.09,02,MI,precip
@@ -4599,6 +4604,7 @@ year,value,anomaly,month,state,type
 2013,2.28,0.78,02,MI,precip
 2014,1.58,0.08,02,MI,precip
 2015,.97,-0.53,02,MI,precip
+2016,1.89,0.39,02,MI,precip
 1895,.74,-1.30,03,MI,precip
 1896,1.37,-0.67,03,MI,precip
 1897,2.87,0.83,03,MI,precip
@@ -5930,6 +5936,7 @@ year,value,anomaly,month,state,type
 2013,23,4.8,01,MI,temp
 2014,12.3,-5.9,01,MI,temp
 2015,16.5,-1.7,01,MI,temp
+2016,22.3,4.1,01,MI,temp
 1895,11.5,-7.6,02,MI,temp
 1896,19.3,0.2,02,MI,temp
 1897,20.4,1.3,02,MI,temp
@@ -6051,6 +6058,7 @@ year,value,anomaly,month,state,type
 2013,20.9,1.8,02,MI,temp
 2014,12.8,-6.3,02,MI,temp
 2015,8.1,-11.0,02,MI,temp
+2016,25.4,6.3,02,MI,temp
 1895,22.8,-6.2,03,MI,temp
 1896,22.7,-6.3,03,MI,temp
 1897,26.2,-2.8,03,MI,temp

@@ -120,6 +120,7 @@ year,value,anomaly,month,state,type
 2013,-.62,-0.51,01,WA,drought
 2014,-2.53,-2.42,01,WA,drought
 2015,-.58,-0.47,01,WA,drought
+2016,1.92,2.03,01,WA,drought
 1895,-.82,-0.64,02,WA,drought
 1896,1.2,1.38,02,WA,drought
 1897,1.7,1.88,02,WA,drought
@@ -240,7 +241,8 @@ year,value,anomaly,month,state,type
 2012,.06,0.24,02,WA,drought
 2013,-1.32,-1.14,02,WA,drought
 2014,.62,0.80,02,WA,drought
-2015,-.89,-0.71,02,WA,drought
+2015,-.9,-0.72,02,WA,drought
+2016,1.63,1.81,02,WA,drought
 1895,-1.26,-1.04,03,WA,drought
 1896,.58,0.80,03,WA,drought
 1897,2.13,2.35,03,WA,drought
@@ -1572,7 +1574,7 @@ year,value,anomaly,month,state,type
 2013,34.6,0.2,01,WA,max
 2014,39.9,5.5,01,WA,max
 2015,40.6,6.2,01,WA,max
-2016,38,3.6,01,WA,max
+2016,37.8,3.4,01,WA,max
 1895,41.8,1.5,02,WA,max
 1896,43.7,3.4,02,WA,max
 1897,39.6,-0.7,02,WA,max
@@ -1693,7 +1695,8 @@ year,value,anomaly,month,state,type
 2012,41.4,1.1,02,WA,max
 2013,42.5,2.2,02,WA,max
 2014,36.3,-4.0,02,WA,max
-2015,48.3,8.0,02,WA,max
+2015,48.4,8.1,02,WA,max
+2016,46.4,6.1,02,WA,max
 1895,47.8,0.2,03,WA,max
 1896,46.2,-1.4,03,WA,max
 1897,39.7,-7.9,03,WA,max
@@ -3025,7 +3028,7 @@ year,value,anomaly,month,state,type
 2013,23.6,1.2,01,WA,min
 2014,28.3,5.9,01,WA,min
 2015,29.6,7.2,01,WA,min
-2016,28.2,5.8,01,WA,min
+2016,28.1,5.7,01,WA,min
 1895,27.5,1.7,02,WA,min
 1896,29.3,3.5,02,WA,min
 1897,25.4,-0.4,02,WA,min
@@ -3146,7 +3149,8 @@ year,value,anomaly,month,state,type
 2012,27.7,1.9,02,WA,min
 2013,28.4,2.6,02,WA,min
 2014,23.4,-2.4,02,WA,min
-2015,33.1,7.3,02,WA,min
+2015,33.2,7.4,02,WA,min
+2016,31.9,6.1,02,WA,min
 1895,27.6,-1.9,03,WA,min
 1896,26.5,-3.0,03,WA,min
 1897,23.8,-5.7,03,WA,min
@@ -4478,6 +4482,7 @@ year,value,anomaly,month,state,type
 2013,3.97,-2.09,01,WA,precip
 2014,4.42,-1.64,01,WA,precip
 2015,4.96,-1.10,01,WA,precip
+2016,6.91,0.85,01,WA,precip
 1895,2.54,-2.20,02,WA,precip
 1896,4.65,-0.09,02,WA,precip
 1897,5.84,1.10,02,WA,precip
@@ -4599,6 +4604,7 @@ year,value,anomaly,month,state,type
 2013,2.76,-1.98,02,WA,precip
 2014,6.28,1.54,02,WA,precip
 2015,4.3,-0.44,02,WA,precip
+2016,4.99,0.25,02,WA,precip
 1895,2.95,-1.20,03,WA,precip
 1896,2.86,-1.29,03,WA,precip
 1897,5.11,0.96,03,WA,precip
@@ -5930,6 +5936,7 @@ year,value,anomaly,month,state,type
 2013,29.1,0.7,01,WA,temp
 2014,34.1,5.7,01,WA,temp
 2015,35.1,6.7,01,WA,temp
+2016,33,4.6,01,WA,temp
 1895,34.7,1.6,02,WA,temp
 1896,36.5,3.4,02,WA,temp
 1897,32.5,-0.6,02,WA,temp
@@ -6050,7 +6057,8 @@ year,value,anomaly,month,state,type
 2012,34.5,1.4,02,WA,temp
 2013,35.5,2.4,02,WA,temp
 2014,29.8,-3.3,02,WA,temp
-2015,40.7,7.6,02,WA,temp
+2015,40.8,7.7,02,WA,temp
+2016,39.2,6.1,02,WA,temp
 1895,37.7,-0.9,03,WA,temp
 1896,36.4,-2.2,03,WA,temp
 1897,31.7,-6.9,03,WA,temp

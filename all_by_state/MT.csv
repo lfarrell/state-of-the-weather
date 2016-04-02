@@ -120,6 +120,7 @@ year,value,anomaly,month,state,type
 2013,-2.43,-2.91,01,MT,drought
 2014,1.02,0.54,01,MT,drought
 2015,.65,0.17,01,MT,drought
+2016,-1.97,-2.45,01,MT,drought
 1895,2.3,1.81,02,MT,drought
 1896,1.28,0.79,02,MT,drought
 1897,4.17,3.68,02,MT,drought
@@ -241,6 +242,7 @@ year,value,anomaly,month,state,type
 2013,-2.72,-3.21,02,MT,drought
 2014,1.39,0.90,02,MT,drought
 2015,.61,0.12,02,MT,drought
+2016,-2.31,-2.80,02,MT,drought
 1895,2.44,2.03,03,MT,drought
 1896,1.95,1.54,03,MT,drought
 1897,4.74,4.33,03,MT,drought
@@ -1693,7 +1695,8 @@ year,value,anomaly,month,state,type
 2012,35.4,3.6,02,MT,max
 2013,36.8,5.0,02,MT,max
 2014,25.1,-6.7,02,MT,max
-2015,37.6,5.8,02,MT,max
+2015,37.5,5.7,02,MT,max
+2016,44,12.2,02,MT,max
 1895,40.4,0.2,03,MT,max
 1896,34.7,-5.5,03,MT,max
 1897,28.2,-12.0,03,MT,max
@@ -3025,7 +3028,7 @@ year,value,anomaly,month,state,type
 2013,12.3,5.3,01,MT,min
 2014,14.5,7.5,01,MT,min
 2015,14.8,7.8,01,MT,min
-2016,14.8,7.8,01,MT,min
+2016,14.9,7.9,01,MT,min
 1895,3.2,-7.7,02,MT,min
 1896,15.3,4.4,02,MT,min
 1897,6.9,-4.0,02,MT,min
@@ -3147,6 +3150,7 @@ year,value,anomaly,month,state,type
 2013,18.1,7.2,02,MT,min
 2014,4.3,-6.6,02,MT,min
 2015,16.2,5.3,02,MT,min
+2016,23.1,12.2,02,MT,min
 1895,16.8,-1.8,03,MT,min
 1896,12.8,-5.8,03,MT,min
 1897,5.3,-13.3,03,MT,min
@@ -4478,6 +4482,7 @@ year,value,anomaly,month,state,type
 2013,1.05,-0.30,01,MT,precip
 2014,1.21,-0.14,01,MT,precip
 2015,1.18,-0.17,01,MT,precip
+2016,.92,-0.43,01,MT,precip
 1895,1.25,0.19,02,MT,precip
 1896,1.03,-0.03,02,MT,precip
 1897,1.76,0.70,02,MT,precip
@@ -4599,6 +4604,7 @@ year,value,anomaly,month,state,type
 2013,.55,-0.51,02,MT,precip
 2014,1.71,0.65,02,MT,precip
 2015,.9,-0.16,02,MT,precip
+2016,.84,-0.22,02,MT,precip
 1895,1.01,-0.27,03,MT,precip
 1896,1.55,0.27,03,MT,precip
 1897,1.79,0.51,03,MT,precip
@@ -5930,6 +5936,7 @@ year,value,anomaly,month,state,type
 2013,21.7,5.0,01,MT,temp
 2014,24.5,7.8,01,MT,temp
 2015,24.7,8.0,01,MT,temp
+2016,23.6,6.9,01,MT,temp
 1895,15.3,-6.0,02,MT,temp
 1896,26.5,5.2,02,MT,temp
 1897,17.7,-3.6,02,MT,temp
@@ -6051,6 +6058,7 @@ year,value,anomaly,month,state,type
 2013,27.5,6.2,02,MT,temp
 2014,14.7,-6.6,02,MT,temp
 2015,26.9,5.6,02,MT,temp
+2016,33.6,12.3,02,MT,temp
 1895,28.6,-0.8,03,MT,temp
 1896,23.7,-5.7,03,MT,temp
 1897,16.8,-12.6,03,MT,temp

@@ -54,17 +54,17 @@ $state_list = array(
     'WI' => 47,
     'WY' => 48
 );
-/*
+
 foreach($state_list as $state => $code) {
     foreach($months as $month) {
         if($month < 10) { $month = "0" . $month; }
 
         $links = [
-            'temp' =>  "http://www.ncdc.noaa.gov/cag/time-series/us/$code/00/tavg/1/$month/1895-2015.csv?base_prd=true&firstbaseyear=1901&lastbaseyear=2000",
-            'precip' => "http://www.ncdc.noaa.gov/cag/time-series/us/$code/00/pcp/1/$month/1895-2015.csv?base_prd=true&firstbaseyear=1901&lastbaseyear=2000",
-            'drought' => "http://www.ncdc.noaa.gov/cag/time-series/us/$code/00/pdsi/1/$month/1895-2015.csv?base_prd=true&firstbaseyear=1901&lastbaseyear=2000",
-            'cooling' => "http://www.ncdc.noaa.gov/cag/time-series/us/$code/00/cdd/1/$month/1895-2015.csv?base_prd=true&firstbaseyear=1901&lastbaseyear=2000",
-            'warming' => "http://www.ncdc.noaa.gov/cag/time-series/us/$code/00/hdd/1/$month/1895-2015.csv?base_prd=true&firstbaseyear=1901&lastbaseyear=2000",
+            'temp' =>  "http://www.ncdc.noaa.gov/cag/time-series/us/$code/00/tavg/1/$month/1895-2016.csv?base_prd=true&firstbaseyear=1901&lastbaseyear=2000",
+            'precip' => "http://www.ncdc.noaa.gov/cag/time-series/us/$code/00/pcp/1/$month/1895-2016.csv?base_prd=true&firstbaseyear=1901&lastbaseyear=2000",
+            'drought' => "http://www.ncdc.noaa.gov/cag/time-series/us/$code/00/pdsi/1/$month/1895-2016.csv?base_prd=true&firstbaseyear=1901&lastbaseyear=2000",
+           // 'cooling' => "http://www.ncdc.noaa.gov/cag/time-series/us/$code/00/cdd/1/$month/1895-2016.csv?base_prd=true&firstbaseyear=1901&lastbaseyear=2000",
+          //  'warming' => "http://www.ncdc.noaa.gov/cag/time-series/us/$code/00/hdd/1/$month/1895-2016.csv?base_prd=true&firstbaseyear=1901&lastbaseyear=2000",
             "max" => "http://www.ncdc.noaa.gov/cag/time-series/us/$code/00/tmax/1/$month/1895-2016.csv?base_prd=true&firstbaseyear=1901&lastbaseyear=2000",
             "min" => "http://www.ncdc.noaa.gov/cag/time-series/us/$code/00/tmin/1/$month/1895-2016.csv?base_prd=true&firstbaseyear=1901&lastbaseyear=2000"
         ];
@@ -96,8 +96,8 @@ foreach($months as $month) {
         "temp" => "http://www.ncdc.noaa.gov/cag/time-series/us/110/00/tavg/1/$month/1895-2016.csv?base_prd=true&firstbaseyear=1901&lastbaseyear=2000",
         "precip" => "http://www.ncdc.noaa.gov/cag/time-series/us/110/00/pcp/1/$month/1895-2016.csv?base_prd=true&firstbaseyear=1901&lastbaseyear=2000",
         "drought" => "http://www.ncdc.noaa.gov/cag/time-series/us/110/00/pdsi/1/$month/1895-2016.csv?base_prd=true&firstbaseyear=1901&lastbaseyear=2000",
-        "cooling" => "http://www.ncdc.noaa.gov/cag/time-series/us/110/00/cdd/1/$month/1895-2016.csv?base_prd=true&firstbaseyear=1901&lastbaseyear=2000",
-        "warming" => "http://www.ncdc.noaa.gov/cag/time-series/us/110/00/hdd/1/$month/1895-2016.csv?base_prd=true&firstbaseyear=1901&lastbaseyear=2000",
+       // "cooling" => "http://www.ncdc.noaa.gov/cag/time-series/us/110/00/cdd/1/$month/1895-2016.csv?base_prd=true&firstbaseyear=1901&lastbaseyear=2000",
+       // "warming" => "http://www.ncdc.noaa.gov/cag/time-series/us/110/00/hdd/1/$month/1895-2016.csv?base_prd=true&firstbaseyear=1901&lastbaseyear=2000",
         "max" => "http://www.ncdc.noaa.gov/cag/time-series/us/110/00/tmax/1/$month/1895-2016.csv?base_prd=true&firstbaseyear=1901&lastbaseyear=2000",
         "min" => "http://www.ncdc.noaa.gov/cag/time-series/us/110/00/tmin/1/$month/1895-2016.csv?base_prd=true&firstbaseyear=1901&lastbaseyear=2000"
     ];
@@ -115,7 +115,7 @@ foreach($months as $month) {
     }
 
     echo $month . " processed\n";
-} */
+}
 
 // Aggregate Files
 function build($path, $states, $fh) {
@@ -146,7 +146,6 @@ $fields = ['drought', 'max', 'min', 'precip', 'temp'];
 $headers = ['year', 'value', 'anomaly', 'month', 'state'];
 
 // Aggregate all by type
-/*
 foreach($types as $type) {
     foreach($fields as $field) {
         $values = scandir("$type/$field");
@@ -156,7 +155,7 @@ foreach($types as $type) {
         build("$type/$field/", $values, $fh);
         fclose($fh);
     }
-} */
+}
 
 // Aggregate all by state
 $headers[] = 'type';

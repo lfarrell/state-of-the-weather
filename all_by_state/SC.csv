@@ -120,6 +120,7 @@ year,value,anomaly,month,state,type
 2013,-1.14,-1.19,01,SC,drought
 2014,.63,0.58,01,SC,drought
 2015,.69,0.64,01,SC,drought
+2016,3.98,3.93,01,SC,drought
 1895,1.23,1.18,02,SC,drought
 1896,-1.18,-1.23,02,SC,drought
 1897,1.25,1.20,02,SC,drought
@@ -241,6 +242,7 @@ year,value,anomaly,month,state,type
 2013,.82,0.77,02,SC,drought
 2014,.38,0.33,02,SC,drought
 2015,.83,0.78,02,SC,drought
+2016,3.84,3.79,02,SC,drought
 1895,1.47,1.48,03,SC,drought
 1896,-1.64,-1.63,03,SC,drought
 1897,-.01,0.00,03,SC,drought
@@ -1694,6 +1696,7 @@ year,value,anomaly,month,state,type
 2013,57.7,-0.8,02,SC,max
 2014,59.7,1.2,02,SC,max
 2015,52.3,-6.2,02,SC,max
+2016,58.7,0.2,02,SC,max
 1895,62.6,-3.3,03,SC,max
 1896,63.5,-2.4,03,SC,max
 1897,65.6,-0.3,03,SC,max
@@ -3147,6 +3150,7 @@ year,value,anomaly,month,state,type
 2013,35.5,0.4,02,SC,min
 2014,36.7,1.6,02,SC,min
 2015,29.8,-5.3,02,SC,min
+2016,36.9,1.8,02,SC,min
 1895,40.4,-1.4,03,SC,min
 1896,39.5,-2.3,03,SC,min
 1897,45.5,3.7,03,SC,min
@@ -4478,6 +4482,7 @@ year,value,anomaly,month,state,type
 2013,2.48,-1.35,01,SC,precip
 2014,3.15,-0.68,01,SC,precip
 2015,3.56,-0.27,01,SC,precip
+2016,2.93,-0.90,01,SC,precip
 1895,3.12,-0.78,02,SC,precip
 1896,5.85,1.95,02,SC,precip
 1897,7.63,3.73,02,SC,precip
@@ -4599,6 +4604,7 @@ year,value,anomaly,month,state,type
 2013,6.2,2.30,02,SC,precip
 2014,3.31,-0.59,02,SC,precip
 2015,4.06,0.16,02,SC,precip
+2016,4.66,0.76,02,SC,precip
 1895,5.4,1.12,03,SC,precip
 1896,2.28,-2.00,03,SC,precip
 1897,4.59,0.31,03,SC,precip
@@ -5930,6 +5936,7 @@ year,value,anomaly,month,state,type
 2013,50.2,5.6,01,SC,temp
 2014,39.7,-4.9,01,SC,temp
 2015,43.8,-0.8,01,SC,temp
+2016,43,-1.6,01,SC,temp
 1895,36.2,-10.6,02,SC,temp
 1896,47,0.2,02,SC,temp
 1897,49.1,2.3,02,SC,temp
@@ -6050,7 +6057,8 @@ year,value,anomaly,month,state,type
 2012,50.7,3.9,02,SC,temp
 2013,46.6,-0.2,02,SC,temp
 2014,48.2,1.4,02,SC,temp
-2015,41,-5.8,02,SC,temp
+2015,41.1,-5.7,02,SC,temp
+2016,47.8,1.0,02,SC,temp
 1895,51.5,-2.4,03,SC,temp
 1896,51.5,-2.4,03,SC,temp
 1897,55.5,1.6,03,SC,temp

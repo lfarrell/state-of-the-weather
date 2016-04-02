@@ -120,6 +120,7 @@ year,value,anomaly,month,state,type
 2013,-3.53,-3.76,01,GA,drought
 2014,3.07,2.84,01,GA,drought
 2015,.72,0.49,01,GA,drought
+2016,1.88,1.65,01,GA,drought
 1895,.91,0.76,02,GA,drought
 1896,-1.12,-1.27,02,GA,drought
 1897,1.09,0.94,02,GA,drought
@@ -241,6 +242,7 @@ year,value,anomaly,month,state,type
 2013,1.8,1.65,02,GA,drought
 2014,2.6,2.45,02,GA,drought
 2015,.79,0.64,02,GA,drought
+2016,1.8,1.65,02,GA,drought
 1895,1.26,1.24,03,GA,drought
 1896,-1.4,-1.42,03,GA,drought
 1897,1.9,1.88,03,GA,drought
@@ -1571,8 +1573,8 @@ year,value,anomaly,month,state,type
 2012,62.6,5.5,01,GA,max
 2013,63.5,6.4,01,GA,max
 2014,51.6,-5.5,01,GA,max
-2015,55.8,-1.3,01,GA,max
-2016,54.8,-2.3,01,GA,max
+2015,55.7,-1.4,01,GA,max
+2016,54.7,-2.4,01,GA,max
 1895,49.3,-11.1,02,GA,max
 1896,59.8,-0.6,02,GA,max
 1897,60.7,0.3,02,GA,max
@@ -1693,7 +1695,8 @@ year,value,anomaly,month,state,type
 2012,64.2,3.8,02,GA,max
 2013,60,-0.4,02,GA,max
 2014,61.6,1.2,02,GA,max
-2015,54.5,-5.9,02,GA,max
+2015,54.6,-5.8,02,GA,max
+2016,61.6,1.2,02,GA,max
 1895,66,-1.5,03,GA,max
 1896,64,-3.5,03,GA,max
 1897,67.9,0.4,03,GA,max
@@ -3147,6 +3150,7 @@ year,value,anomaly,month,state,type
 2013,37.5,0.6,02,GA,min
 2014,38.1,1.2,02,GA,min
 2015,31.8,-5.1,02,GA,min
+2016,37.9,1.0,02,GA,min
 1895,44,0.8,03,GA,min
 1896,41.6,-1.6,03,GA,min
 1897,49.8,6.6,03,GA,min
@@ -4477,7 +4481,8 @@ year,value,anomaly,month,state,type
 2012,3.04,-1.35,01,GA,precip
 2013,3.32,-1.07,01,GA,precip
 2014,3.33,-1.06,01,GA,precip
-2015,3.65,-0.74,01,GA,precip
+2015,3.64,-0.75,01,GA,precip
+2016,3.86,-0.53,01,GA,precip
 1895,2.89,-1.62,02,GA,precip
 1896,5.52,1.01,02,GA,precip
 1897,7.75,3.24,02,GA,precip
@@ -4599,6 +4604,7 @@ year,value,anomaly,month,state,type
 2013,9.62,5.11,02,GA,precip
 2014,4.06,-0.45,02,GA,precip
 2015,4.48,-0.03,02,GA,precip
+2016,4.84,0.33,02,GA,precip
 1895,6.58,1.52,03,GA,precip
 1896,3.56,-1.50,03,GA,precip
 1897,8.62,3.56,03,GA,precip
@@ -5929,7 +5935,8 @@ year,value,anomaly,month,state,type
 2012,50,3.9,01,GA,temp
 2013,52.5,6.4,01,GA,temp
 2014,40,-6.1,01,GA,temp
-2015,45,-1.1,01,GA,temp
+2015,44.9,-1.2,01,GA,temp
+2016,44.2,-1.9,01,GA,temp
 1895,38.5,-10.1,02,GA,temp
 1896,48.4,-0.2,02,GA,temp
 1897,51.3,2.7,02,GA,temp
@@ -6051,6 +6058,7 @@ year,value,anomaly,month,state,type
 2013,48.8,0.2,02,GA,temp
 2014,49.8,1.2,02,GA,temp
 2015,43.2,-5.4,02,GA,temp
+2016,49.8,1.2,02,GA,temp
 1895,55,-0.4,03,GA,temp
 1896,52.8,-2.6,03,GA,temp
 1897,58.9,3.5,03,GA,temp

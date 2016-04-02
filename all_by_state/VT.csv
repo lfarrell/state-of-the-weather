@@ -120,6 +120,7 @@ year,value,anomaly,month,state,type
 2013,-1.13,-0.70,01,VT,drought
 2014,1.78,2.21,01,VT,drought
 2015,-.12,0.31,01,VT,drought
+2016,-1.12,-0.69,01,VT,drought
 1895,-1.01,-0.60,02,VT,drought
 1896,.93,1.34,02,VT,drought
 1897,-2.45,-2.04,02,VT,drought
@@ -241,6 +242,7 @@ year,value,anomaly,month,state,type
 2013,-1.41,-1.00,02,VT,drought
 2014,1.92,2.33,02,VT,drought
 2015,-.59,-0.18,02,VT,drought
+2016,1.32,1.73,02,VT,drought
 1895,-1.68,-1.33,03,VT,drought
 1896,2.15,2.50,03,VT,drought
 1897,.14,0.49,03,VT,drought
@@ -1571,8 +1573,8 @@ year,value,anomaly,month,state,type
 2012,30.2,4.5,01,VT,max
 2013,28.5,2.8,01,VT,max
 2014,24.4,-1.3,01,VT,max
-2015,23.8,-1.9,01,VT,max
-2016,29.5,3.8,01,VT,max
+2015,23.7,-2.0,01,VT,max
+2016,29.7,4.0,01,VT,max
 1895,23.5,-4.1,02,VT,max
 1896,27,-0.6,02,VT,max
 1897,28.9,1.3,02,VT,max
@@ -1694,6 +1696,7 @@ year,value,anomaly,month,state,type
 2013,29.3,1.7,02,VT,max
 2014,26.5,-1.1,02,VT,max
 2015,17.4,-10.2,02,VT,max
+2016,34.1,6.5,02,VT,max
 1895,32.6,-5.0,03,VT,max
 1896,31.6,-6.0,03,VT,max
 1897,36.4,-1.2,03,VT,max
@@ -3025,7 +3028,7 @@ year,value,anomaly,month,state,type
 2013,8.8,4.0,01,VT,min
 2014,4.8,0.0,01,VT,min
 2015,.8,-4.0,01,VT,min
-2016,11.8,7.0,01,VT,min
+2016,11.9,7.1,01,VT,min
 1895,-.3,-5.7,02,VT,min
 1896,5.8,0.4,02,VT,min
 1897,6.4,1.0,02,VT,min
@@ -3147,6 +3150,7 @@ year,value,anomaly,month,state,type
 2013,13.8,8.4,02,VT,min
 2014,6.7,1.3,02,VT,min
 2015,-6.8,-12.2,02,VT,min
+2016,13.6,8.2,02,VT,min
 1895,12,-4.8,03,VT,min
 1896,10,-6.8,03,VT,min
 1897,16.1,-0.7,03,VT,min
@@ -4478,6 +4482,7 @@ year,value,anomaly,month,state,type
 2013,1.87,-1.08,01,VT,precip
 2014,3.11,0.16,01,VT,precip
 2015,2.79,-0.16,01,VT,precip
+2016,1.66,-1.29,01,VT,precip
 1895,1.32,-1.23,02,VT,precip
 1896,4.14,1.59,02,VT,precip
 1897,1.99,-0.56,02,VT,precip
@@ -4599,6 +4604,7 @@ year,value,anomaly,month,state,type
 2013,1.92,-0.63,02,VT,precip
 2014,3.18,0.63,02,VT,precip
 2015,1.79,-0.76,02,VT,precip
+2016,4.89,2.34,02,VT,precip
 1895,1.51,-1.54,03,VT,precip
 1896,5.58,2.53,03,VT,precip
 1897,3.3,0.25,03,VT,precip
@@ -5930,6 +5936,7 @@ year,value,anomaly,month,state,type
 2013,18.6,3.3,01,VT,temp
 2014,14.6,-0.7,01,VT,temp
 2015,12.3,-3.0,01,VT,temp
+2016,20.8,5.5,01,VT,temp
 1895,11.6,-4.9,02,VT,temp
 1896,16.4,-0.1,02,VT,temp
 1897,17.6,1.1,02,VT,temp
@@ -6051,6 +6058,7 @@ year,value,anomaly,month,state,type
 2013,21.5,5.0,02,VT,temp
 2014,16.6,0.1,02,VT,temp
 2015,5.3,-11.2,02,VT,temp
+2016,23.9,7.4,02,VT,temp
 1895,22.3,-4.9,03,VT,temp
 1896,20.8,-6.4,03,VT,temp
 1897,26.2,-1.0,03,VT,temp

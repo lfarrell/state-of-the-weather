@@ -45,6 +45,7 @@ d3.select('#month').on('change', function() {
 
 var render = _.debounce(function() {
     d3.selectAll(".svg").remove();
+    d3.selectAll(".heading").remove();
 
     var precip_colors = ['#543005','#8c510a','#bf812d','#dfc27d','#f6e8c3','#f5f5f5','#c7eae5','#80cdc1','#35978f','#01665e','#003c30'];
     var temp_colors = ['#a50026','#d73027','#f46d43','#fdae61','#fee090','#ffffbf','#e0f3f8','#abd9e9','#74add1','#4575b4','#313695'].reverse();
@@ -533,7 +534,7 @@ function stripColors(values, data) {
  */
 function drawLegend(selector, color_values, values, type) {
     d3.select(selector).append("h4")
-        .attr("class", "text-center")
+        .attr("class", "text-center heading")
         .text("Departure from Average");
 
     var colors = stripColors(color_values, values, type);

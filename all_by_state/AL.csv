@@ -119,7 +119,8 @@ year,value,anomaly,month,state,type
 2012,-1.91,-1.82,01,AL,drought
 2013,1,1.09,01,AL,drought
 2014,1.83,1.92,01,AL,drought
-2015,-.57,-0.48,01,AL,drought
+2015,-.58,-0.49,01,AL,drought
+2016,1.84,1.93,01,AL,drought
 1895,-.59,-0.53,02,AL,drought
 1896,-1.19,-1.13,02,AL,drought
 1897,-2.86,-2.80,02,AL,drought
@@ -240,7 +241,8 @@ year,value,anomaly,month,state,type
 2012,-2.02,-1.96,02,AL,drought
 2013,1.98,2.04,02,AL,drought
 2014,1.82,1.88,02,AL,drought
-2015,-.73,-0.67,02,AL,drought
+2015,-.74,-0.68,02,AL,drought
+2016,1.94,2.00,02,AL,drought
 1895,-.17,-0.04,03,AL,drought
 1896,-1.23,-1.10,03,AL,drought
 1897,-1.58,-1.45,03,AL,drought
@@ -1572,7 +1574,7 @@ year,value,anomaly,month,state,type
 2013,59.9,3.9,01,AL,max
 2014,49.8,-6.2,01,AL,max
 2015,54.6,-1.4,01,AL,max
-2016,53.3,-2.7,01,AL,max
+2016,53.4,-2.6,01,AL,max
 1895,48.1,-11.6,02,AL,max
 1896,59,-0.7,02,AL,max
 1897,61.1,1.4,02,AL,max
@@ -1694,6 +1696,7 @@ year,value,anomaly,month,state,type
 2013,58.9,-0.8,02,AL,max
 2014,58.7,-1.0,02,AL,max
 2015,52.6,-7.1,02,AL,max
+2016,61.5,1.8,02,AL,max
 1895,66.5,-0.7,03,AL,max
 1896,63.9,-3.3,03,AL,max
 1897,69.9,2.7,03,AL,max
@@ -3024,8 +3027,8 @@ year,value,anomaly,month,state,type
 2012,38,3.8,01,AL,min
 2013,40.3,6.1,01,AL,min
 2014,24.7,-9.5,01,AL,min
-2015,32.4,-1.8,01,AL,min
-2016,32.1,-2.1,01,AL,min
+2015,32.5,-1.7,01,AL,min
+2016,32.4,-1.8,01,AL,min
 1895,26.8,-9.6,02,AL,min
 1896,36.4,0.0,02,AL,min
 1897,41.2,4.8,02,AL,min
@@ -3147,6 +3150,7 @@ year,value,anomaly,month,state,type
 2013,37.2,0.8,02,AL,min
 2014,35.9,-0.5,02,AL,min
 2015,29.9,-6.5,02,AL,min
+2016,38,1.6,02,AL,min
 1895,42.4,-0.5,03,AL,min
 1896,41.2,-1.7,03,AL,min
 1897,50.4,7.5,03,AL,min
@@ -4478,6 +4482,7 @@ year,value,anomaly,month,state,type
 2013,6.27,1.09,01,AL,precip
 2014,2.7,-2.48,01,AL,precip
 2015,4.34,-0.84,01,AL,precip
+2016,4.13,-1.05,01,AL,precip
 1895,2.66,-2.52,02,AL,precip
 1896,6.16,0.98,02,AL,precip
 1897,6.32,1.14,02,AL,precip
@@ -4599,6 +4604,7 @@ year,value,anomaly,month,state,type
 2013,8.86,3.68,02,AL,precip
 2014,5.75,0.57,02,AL,precip
 2015,4.05,-1.13,02,AL,precip
+2016,6.31,1.13,02,AL,precip
 1895,7.62,1.46,03,AL,precip
 1896,5.44,-0.72,03,AL,precip
 1897,10.66,4.50,03,AL,precip
@@ -5929,7 +5935,8 @@ year,value,anomaly,month,state,type
 2012,50.1,5.0,01,AL,temp
 2013,50.1,5.0,01,AL,temp
 2014,37.3,-7.8,01,AL,temp
-2015,43.5,-1.6,01,AL,temp
+2015,43.6,-1.5,01,AL,temp
+2016,42.9,-2.2,01,AL,temp
 1895,37.4,-10.6,02,AL,temp
 1896,47.7,-0.3,02,AL,temp
 1897,51.1,3.1,02,AL,temp
@@ -6050,7 +6057,8 @@ year,value,anomaly,month,state,type
 2012,52.1,4.1,02,AL,temp
 2013,48,0.0,02,AL,temp
 2014,47.3,-0.7,02,AL,temp
-2015,41.2,-6.8,02,AL,temp
+2015,41.3,-6.7,02,AL,temp
+2016,49.8,1.8,02,AL,temp
 1895,54.5,-0.6,03,AL,temp
 1896,52.5,-2.6,03,AL,temp
 1897,60.2,5.1,03,AL,temp
