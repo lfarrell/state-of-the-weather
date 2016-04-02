@@ -43,9 +43,7 @@ d3.select('#month').on('change', function() {
     render();
 });
 
-var render = _.throttle(function() {
-    //d3.selectAll('.charts').classed('hide', true);
-   // d3.selectAll('#load').classed('hide', false);
+var render = _.debounce(function() {
     d3.selectAll(".svg").remove();
 
     var precip_colors = ['#543005','#8c510a','#bf812d','#dfc27d','#f6e8c3','#f5f5f5','#c7eae5','#80cdc1','#35978f','#01665e','#003c30'];
@@ -166,6 +164,21 @@ var render = _.throttle(function() {
         // hover over
         focusHover(max_svg, month_max_filtered, "#max_div", "degrees");
 
+        // Add max strip chart
+        var tip_max = d3.tip().attr('class', 'd3-tip').html(function(d) {
+            return '<h4 class="text-center">' + stringDate(month) + '(' + d.year + ')</h4>' +
+                '<ul class="list-unstyled">' +
+                '<li>Historical Avg: ' + monthAvg(avgs, 'max', month) + ' degrees</li>' +
+                '<li>Actual Avg: ' + d.value + ' degrees</li>' +
+                '<li>Departure from Avg: ' + d.anomaly + ' degrees</li>' +
+                '</ul>';
+        });
+        var max_strip_color = stripColors(temp_colors, month_max_filtered, "max");
+        var month_max_strip_scale = stripScale(month_max_filtered, 'anomaly');
+
+        drawLegend("#max_div", temp_colors, month_max_filtered, "anomaly");
+        drawStrip("#max_div", tip_max, max_strip_color, month_max_strip_scale, month_max_filtered);
+
         /* Min Temp */
         d3.select("#mintemp").text(month_min_max_min_value.max[4].value);
         d3.select("#mintemp-year").text(month_min_max_min_value.max[4].year);
@@ -185,6 +198,21 @@ var render = _.throttle(function() {
 
         // hover over
         focusHover(min_svg, month_min_filtered, "#min_div", "degrees");
+
+        // Add max strip chart
+        var tip_min = d3.tip().attr('class', 'd3-tip').html(function(d) {
+            return '<h4 class="text-center">' + stringDate(month) + '(' + d.year + ')</h4>' +
+                '<ul class="list-unstyled">' +
+                '<li>Historical Avg: ' + monthAvg(avgs, 'min', month) + ' degrees</li>' +
+                '<li>Actual Avg: ' + d.value + ' degrees</li>' +
+                '<li>Departure from Avg: ' + d.anomaly + ' degrees</li>' +
+                '</ul>';
+        });
+        var min_strip_color = stripColors(temp_colors, month_min_filtered, "min");
+        var month_min_strip_scale = stripScale(month_min_filtered, 'anomaly');
+
+        drawLegend("#min_div", temp_colors, month_min_filtered, "anomaly");
+        drawStrip("#min_div", tip_min, min_strip_color, month_min_strip_scale, month_min_filtered);
 
         /* Precip */
         d3.select("#wettest").text(month_precip_max_min_value.max[4].value);
@@ -381,7 +409,9 @@ var render = _.throttle(function() {
             return chart;
         }
 
-        d3.selectAll('.row').classed('hide', false);
+        var rows = d3.selectAll('.row');
+        rows.classed('opaque', false);
+        rows.classed('hide', false)
         d3.selectAll('#load').classed('hide', true);
     });
 }, 400);
@@ -495,7 +525,6 @@ function yScale(data, height) {
  * @returns {*}
  */
 function stripColors(values, data, type) {
-    console.log(type, d3.extent(data, function(d) { return d.anomaly; }))
     return d3.scale.quantize()
         .domain(d3.extent(data, function(d) { return d.anomaly; }))
         .range(values);

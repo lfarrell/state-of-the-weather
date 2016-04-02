@@ -15,19 +15,20 @@
     <div id="note" class="row">
         <p id="load" class="text-center">Loading ...</p>
     </div>
-    <div class="row">
+    <div class="row hide">
         <h1 class="text-center">State of the Weather</h1>
         <div class="col-sm-12 col-lg-offset-1 col-lg-10">
-            <p>Climate change doesn't mean it's always hot outside, or that the world will warm uniformly.
-                The average temperature of the United States was below 20th century historical averages as
-                recently as February 2015. You can use the following visualization to check the temperature
-                anomaly levels for the contiguous United States or the state you live in. Data ranges from 1895 to 2015. Years
-                marked in red are the ten most recent years. Hover over a
-                line to see data for that year. (Note: does not include Alaska or Hawaii. Average anomaly
-                for a year is the average of the monthly averages for that year.)</p>
+            <p>Climate change doesn't mean it's always hot outside, or that every year will necessarily be hotter than the next.
+                For example, the average temperature of the United States was below 20th century historical averages as
+                recently as February 2015. You can use the following visualization to view the average temperature,
+                maximum temperature, minimum temperature, precipitation
+                and the drought levels for the contiguous United States or the state you live in. The strip charts below each
+                line chart shows anomalies from the historical averages for the chart above it. Data ranges from
+                1895 to 2016, depending on the state. Hover over a graph to see data for that state and month.
+                (Note: does not include Alaska or Hawaii.)</p>
         </div>
     </div>
-    <div class="row">
+    <div class="row hide">
         <div class="col-sm-12 col-lg-12" id="us_heat">
             <div class="col-sm-offset-2 col-sm-4 col-lg-offset-3 col-lg-3">
                 <select id="state" name="state" class="form-control">
@@ -104,7 +105,7 @@
             </div>
         </div>
     </div>
-    <div class="row charts">
+    <div class="row charts opaque">
         <div id="temp_div" class="col-sm-12 col-lg-12">
             <h2 class="text-center">Selected Area: <span class="selected_state">Contiguous U.S.</span>
                 (<span class="selected_month">January</span>)</h2>
@@ -152,6 +153,11 @@
         </div>
         <div id="drought_div" class="col-sm-12 col-lg-12">
             <h3 class="text-center">Average Drought</h3>
+            <p class="col-md-offset-1">
+                The Palmer Drought Index is a measure of long term drought. It calculates soil moisture based on recent precipitation and temperature. 0 is considered
+                 a normal level of soil moisture, while increasingly negative numbers indicate progressively severe levels of drought.
+                Positive numbers represent increasingly wet soil conditions. For full details see the
+                <a href="https://en.wikipedia.org/wiki/Palmer_drought_index">Wikipedia entry</a>.</p>
             <p class="col-md-offset-1">The least drought ridden <span class="selected-month"></span> on record in <span class="selected-state"></span>
                 was <span id="least-driest-year"></span> when the Palmer Drought Index was <span id="least-driest"></span>.
             The deepest drought for <span class="selected-month"></span> on record in <span class="selected-state"></span>
@@ -163,7 +169,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js" charset="utf-8"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.6.7/d3-tip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.9.0/d3-legend.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.9.0/d3-legend.js"></script>
 <script src="js/swoopy-drag/lib/d3-jetpack.min.js"></script>
 <script src="js/swoopy-drag/swoopy-drag.min.js"></script>
 <script src="js/custom.js"></script>
