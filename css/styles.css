@@ -12,6 +12,10 @@ p {
     font-size: 1.2em;
 }
 
+.averages h4 {
+    display: inline-block;
+}
+
 .axis path,
 .axis line {
     fill: none;

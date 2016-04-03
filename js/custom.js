@@ -109,9 +109,10 @@ var render = _.debounce(function() {
         d3.selectAll(".selected-state").text(state_name);
 
         /* Avg Temp Year */
-        var temp_strip_color = stripColors(temp_colors, month_temp_filtered, "temp");
+        var temp_strip_color = stripColors(temp_colors, month_temp_filtered);
 
         /* Avg Temp Month */
+        d3.select("#avg_temp_text").text(monthAvg(avgs, "temp", month));
         d3.select("#hottest").text(month_temp_max_min_value.max[4].value);
         d3.select("#hottest-year").text(month_temp_max_min_value.max[4].year);
         d3.select("#least-hottest").text(month_temp_max_min_value.min[0].value);
@@ -144,6 +145,7 @@ var render = _.debounce(function() {
         drawStrip("#temp_div", tip_temp, temp_strip_color, month_temp_filtered);
 
         /* Max Temp */
+        d3.select("#avg_max_text").text(monthAvg(avgs, "max", month));
         d3.select("#maxtemp").text(month_max_max_min_value.max[4].value);
         d3.select("#maxtemp-year").text(month_max_max_min_value.max[4].year);
         d3.select("#least-maxtemp").text(month_max_max_min_value.min[0].value);
@@ -172,12 +174,13 @@ var render = _.debounce(function() {
                 '<li>Departure from Avg: ' + d.anomaly + ' degrees</li>' +
                 '</ul>';
         });
-        var max_strip_color = stripColors(temp_colors, month_max_filtered, "max");
+        var max_strip_color = stripColors(temp_colors, month_max_filtered);
 
         drawLegend("#max_div", temp_colors, month_max_filtered, "anomaly");
         drawStrip("#max_div", tip_max, max_strip_color, month_max_filtered);
 
         /* Min Temp */
+        d3.select("#avg_min_text").text(monthAvg(avgs, "min", month));
         d3.select("#mintemp").text(month_min_max_min_value.max[4].value);
         d3.select("#mintemp-year").text(month_min_max_min_value.max[4].year);
         d3.select("#least-mintemp").text(month_min_max_min_value.min[0].value);
@@ -206,12 +209,14 @@ var render = _.debounce(function() {
                 '<li>Departure from Avg: ' + d.anomaly + ' degrees</li>' +
                 '</ul>';
         });
-        var min_strip_color = stripColors(temp_colors, month_min_filtered, "min");
+        var min_strip_color = stripColors(temp_colors, month_min_filtered);
 
         drawLegend("#min_div", temp_colors, month_min_filtered, "anomaly");
         drawStrip("#min_div", tip_min, min_strip_color, month_min_filtered);
 
         /* Precip */
+        d3.select("#avg_precip_text").text(monthAvg(avgs, "precip", month));
+        d3.select("#avg_drought_text").text(monthAvg(avgs, "drought", month));
         d3.select("#wettest").text(month_precip_max_min_value.max[4].value);
         d3.select("#wettest-year").text(month_precip_max_min_value.max[4].year);
         d3.select("#least-wettest").text(month_precip_max_min_value.min[0].value);
@@ -241,7 +246,7 @@ var render = _.debounce(function() {
         focusHover(precip_svg, month_precip_filtered, "#precip_div", "inches");
 
         // Precip strip plot
-        var precip_strip_color = stripColors(precip_colors, month_precip_filtered, "precip");
+        var precip_strip_color = stripColors(precip_colors, month_precip_filtered);
 
         drawLegend("#precip_div", precip_colors, month_precip_filtered, "anomaly");
         drawStrip("#precip_div", tip_precip, precip_strip_color, month_precip_filtered);
@@ -252,7 +257,7 @@ var render = _.debounce(function() {
         d3.select("#driest").text(month_drought_max_min_value.min[0].value);
         d3.select("#driest-year").text(month_drought_max_min_value.min[0].year);
 
-        var palmer_strip_color = stripColors(precip_colors, month_drought_filtered, "drought");
+        var palmer_strip_color = stripColors(precip_colors, month_drought_filtered);
 
         var tip_palmer = d3.tip().attr('class', 'd3-tip').html(function(d) {
             return '<h4 class="text-center">' + stringDate(month) + ' (' + d.year + ')</h4>' +
@@ -535,7 +540,7 @@ function stripColors(values, data) {
 function drawLegend(selector, color_values, values, type) {
     d3.select(selector).append("h4")
         .attr("class", "text-center heading")
-        .text("Departure from Average");
+        .text("Departure from Average (Anomaly)");
 
     var colors = stripColors(color_values, values, type);
     var class_name = selector.substr(1);

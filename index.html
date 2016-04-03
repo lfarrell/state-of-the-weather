@@ -20,12 +20,16 @@
         <div class="col-sm-12 col-lg-offset-1 col-lg-10">
             <p>Climate change doesn't mean it's always hot outside, or that every year will necessarily be hotter than the next.
                 For example, the average temperature of the United States was below 20th century historical averages as
-                recently as February 2015. You can use the following visualization to view the average temperature,
-                maximum temperature, minimum temperature, precipitation
-                and the drought levels for the contiguous United States or the state you live in. The strip charts below each
-                line chart shows anomalies from the historical averages for the chart above it. Data ranges from
-                1895 to 2016, depending on the state. Hover over a graph to see data for that state and month.
-                (Note: does not include Alaska or Hawaii)</p>
+                recently as February 2015. You can use the following visualization to view the changes through time
+                in American weather. You can view the average temperature,
+                maximum average temperature, minimum average temperature, average precipitation level
+                and the average drought level for every state in the contiguous United States. The strip charts below each
+                line chart show anomalies from the historical averages for the chart above it. Data ranges from
+                1895 to 2016, depending on the state. Hover over or swipe a graph to see details for that state and month.
+                (Note: does not include Alaska or Hawaii).
+            </p>
+            <p>Note: dotted yellow lines in graphs indicate the historic average
+                for the chart in question.</p>
         </div>
     </div>
     <div class="row hide">
@@ -107,11 +111,15 @@
         <div id="temp_div" class="col-sm-12 col-lg-12">
             <h2 class="text-center">Selected Area: <span class="selected_state">Contiguous U.S.</span>
                 (<span class="selected_month">January</span>)</h2>
-            <h3 class="text-center">Average Temperature</h3>
+
+             <h3 class="text-center">Average Temperature</h3>
+             <h4 class="text-center">(Historical Avg: <span id="avg_temp_text"></span> degrees)</h4>
+
             <p class="col-md-offset-1">As might be expected, average temperatures vary widely across the United States.
             Geography isn't the only reason that temperatures have varied. Notice that over the last few years much of the west has
                 been well above average compared to the east. While, in December 2015 the situation was reversed and much
-            of the east had significantly above average temperatures.</p>
+            of the east had significantly above average temperatures. Overall, the average maximum and minimum
+            temperatures tend to closely track the hottest and coldest months on record.</p>
             <p class="col-md-offset-1">Overall, The hottest daily average temperature for <span class="selected-state"></span>
                 in <span class="selected-month"></span> was in <span id="hottest-year"></span>
                 when the average temperature was <span id="hottest"></span> degrees.The coolest daily average temperature for <span class="selected-state"></span>
@@ -121,6 +129,7 @@
         </div>
         <div id="max_div" class="col-sm-12 col-lg-12">
             <h3 class="text-center">Average Maximum Temperature</h3>
+            <h4 class="text-center">(Historical Avg: <span id="avg_max_text"></span> degrees)</h4>
             <p class="col-md-offset-1">The hottest maximum daily average temperature for <span class="selected-state"></span>
                 in <span class="selected-month"></span> was in <span id="maxtemp-year"></span> when the
                 average maximum temperature was <span id="maxtemp"></span> degrees.
@@ -131,6 +140,7 @@
         </div>
         <div id="min_div" class="col-sm-12 col-lg-12">
             <h3 class="text-center">Average Minimum Temperature</h3>
+            <h4 class="text-center">(Historical Avg: <span id="avg_min_text"></span> degrees)</h4>
             <p class="col-md-offset-1">The hottest minimum daily average temperature for <span class="selected-state"></span>
                 in <span class="selected-month"></span> was
                 in <span id="mintemp-year"></span> when the average minimum temperature was <span id="mintemp"></span> degrees.
@@ -141,7 +151,17 @@
         </div>
         <div id="precip_div" class="col-sm-12 col-lg-12">
             <h3 class="text-center">Average Precipitation</h3>
-            <p class="col-md-offset-1">The wettest <span class="selected-month"></span> on record was in
+            <div class="averages text-center">
+                <h4>(Historical Avg: <span id="avg_precip_text"></span> inches) </h4>
+                <h4> (Historical Avg Drought Level: <span id="avg_drought_text"></span>)</h4>
+            </div>
+            <p class="col-md-offset-1">
+                In a country the size of the United States the average levels of precipitation, vary widely. The United States tends
+                to be much drier west of the 100th meridian of longitude (roughly, a line from central North Dakota
+                down thorough Texas). In addition, to being drier on average than the east, much of the west has been in
+                a deep drought since
+                the turn of the century. To view drought levels see the Palmer Drought Index below the precipitation chart.</p>
+                <p class="col-md-offset-1">The wettest <span class="selected-month"></span> on record was in
                  <span id="wettest-year"></span> when an average of <span id="wettest"></span> inches of rain
                 fell across <span class="selected-state"></span>.
             The driest <span class="selected-month"></span> on record was in
@@ -178,7 +198,7 @@
 <!--<script src="js/swoopy-drag/swoopy-drag.min.js"></script> -->
 <script src="js/custom.min.js"></script>
 <script type="text/javascript">
- /*   var _gaq = _gaq || [];
+    var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-47256145-1']);
     _gaq.push(['_trackPageview']);
 
@@ -186,7 +206,7 @@
         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();*/
+    })();
 </script>
 </body>
 </html>
