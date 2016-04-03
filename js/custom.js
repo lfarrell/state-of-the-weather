@@ -298,11 +298,11 @@ var render = _.debounce(function() {
                 .attr("height", 80)
                 .translate([margins.left, 0])
                 .style("fill", _.compose(strip_color, ƒ('anomaly')))
-                .on('mouseover', function(d) {
+                .on('mouseover touchstart', function(d) {
                     d3.select(this).attr("height", 100);
                     tip.show.call(this, d);
                 })
-                .on('mouseout', function(d) {
+                .on('mouseout touchend', function(d) {
                     d3.select(this).attr("height", 80);
                     tip.hide.call(this, d);
                 });
