@@ -141,7 +141,7 @@ var render = _.debounce(function() {
                 '</ul>';
         });
 
-        drawLegend("#temp_div", temp_colors, month_temp_filtered, "anomaly");
+        drawLegend("#temp_div", temp_colors, month_temp_filtered, "temp");
         drawStrip("#temp_div", tip_temp, temp_strip_color, month_temp_filtered);
 
         /* Max Temp */
@@ -176,7 +176,7 @@ var render = _.debounce(function() {
         });
         var max_strip_color = stripColors(temp_colors, month_max_filtered);
 
-        drawLegend("#max_div", temp_colors, month_max_filtered, "anomaly");
+        drawLegend("#max_div", temp_colors, month_max_filtered, "max");
         drawStrip("#max_div", tip_max, max_strip_color, month_max_filtered);
 
         /* Min Temp */
@@ -211,7 +211,7 @@ var render = _.debounce(function() {
         });
         var min_strip_color = stripColors(temp_colors, month_min_filtered);
 
-        drawLegend("#min_div", temp_colors, month_min_filtered, "anomaly");
+        drawLegend("#min_div", temp_colors, month_min_filtered, "min");
         drawStrip("#min_div", tip_min, min_strip_color, month_min_filtered);
 
         /* Precip */
@@ -248,7 +248,7 @@ var render = _.debounce(function() {
         // Precip strip plot
         var precip_strip_color = stripColors(precip_colors, month_precip_filtered);
 
-        drawLegend("#precip_div", precip_colors, month_precip_filtered, "anomaly");
+        drawLegend("#precip_div", precip_colors, month_precip_filtered, "precip");
         drawStrip("#precip_div", tip_precip, precip_strip_color, month_precip_filtered);
 
         /* Palmer Drought Index */
@@ -268,7 +268,7 @@ var render = _.debounce(function() {
                 '</ul>';
         });
 
-        drawLegend("#drought_div", precip_colors, month_drought_filtered, "value");
+        drawLegend("#drought_div", precip_colors, month_drought_filtered, "drought");
         drawStrip("#drought_div", tip_palmer, palmer_strip_color, month_drought_filtered);
 
 
@@ -538,11 +538,21 @@ function stripColors(values, data) {
  * @returns {*}
  */
 function drawLegend(selector, color_values, values, type) {
+    var word;
+
+    if(type == "precip") {
+        word = "inches";
+    } else if (type == "drought") {
+        word = "";
+    } else {
+        word = "degrees";
+    }
+
     d3.select(selector).append("h4")
         .attr("class", "text-center heading")
-        .text("Departure from Average (Anomaly)");
+        .text("Departure from Average (Anomaly " + word + ")");
 
-    var colors = stripColors(color_values, values, type);
+    var colors = stripColors(color_values, values);
     var class_name = selector.substr(1);
     var svg = d3.select(selector).append("svg")
         .classed("svg", true)
