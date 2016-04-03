@@ -68,6 +68,16 @@ a, a:visited, a:hover {
     color: orange;
 }
 
+footer ul {
+    text-align: center;
+}
+
+footer ul li {
+    display: inline;
+    margin-left: 25px;
+    font-size: 1.4em;
+}
+
 /* Overlay */
 .overlay {
     fill: none;
