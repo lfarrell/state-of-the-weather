@@ -364,6 +364,7 @@ year,value,anomaly,month,state,type
 2013,1,1.02,03,IL,drought
 2014,-1.18,-1.16,03,IL,drought
 2015,1.58,1.60,03,IL,drought
+2016,2.6,2.62,03,IL,drought
 1895,-1.69,-1.68,04,IL,drought
 1896,-1.94,-1.93,04,IL,drought
 1897,3.3,3.31,04,IL,drought
@@ -1818,6 +1819,7 @@ year,value,anomaly,month,state,type
 2013,42.3,-7.4,03,IL,max
 2014,45.3,-4.4,03,IL,max
 2015,49,-0.7,03,IL,max
+2016,56.9,7.2,03,IL,max
 1895,65.9,3.2,04,IL,max
 1896,70.1,7.4,04,IL,max
 1897,59.8,-2.9,04,IL,max
@@ -3272,6 +3274,7 @@ year,value,anomaly,month,state,type
 2013,26.4,-3.6,03,IL,min
 2014,23.4,-6.6,03,IL,min
 2015,27.6,-2.4,03,IL,min
+2016,37.5,7.5,03,IL,min
 1895,41.8,1.5,04,IL,min
 1896,46.8,6.5,04,IL,min
 1897,40.1,-0.2,04,IL,min
@@ -4726,6 +4729,7 @@ year,value,anomaly,month,state,type
 2013,2.61,-0.48,03,IL,precip
 2014,1.46,-1.63,03,IL,precip
 2015,2.35,-0.74,03,IL,precip
+2016,3.23,0.14,03,IL,precip
 1895,2.08,-1.64,04,IL,precip
 1896,2.8,-0.92,04,IL,precip
 1897,4.28,0.56,04,IL,precip
@@ -6180,6 +6184,7 @@ year,value,anomaly,month,state,type
 2013,34.3,-5.5,03,IL,temp
 2014,34.4,-5.4,03,IL,temp
 2015,38.3,-1.5,03,IL,temp
+2016,47.2,7.4,03,IL,temp
 1895,53.9,2.4,04,IL,temp
 1896,58.4,6.9,04,IL,temp
 1897,49.9,-1.6,04,IL,temp

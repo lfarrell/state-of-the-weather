@@ -364,6 +364,7 @@ year,value,anomaly,month,state,type
 2013,-.91,-0.66,03,LA,drought
 2014,.23,0.48,03,LA,drought
 2015,.19,0.44,03,LA,drought
+2016,2,2.25,03,LA,drought
 1895,-.76,-0.57,04,LA,drought
 1896,-.38,-0.19,04,LA,drought
 1897,-2.19,-2.00,04,LA,drought
@@ -1817,7 +1818,8 @@ year,value,anomaly,month,state,type
 2012,77.6,7.6,03,LA,max
 2013,67.6,-2.4,03,LA,max
 2014,66.3,-3.7,03,LA,max
-2015,70.4,0.4,03,LA,max
+2015,70.5,0.5,03,LA,max
+2016,73.4,3.4,03,LA,max
 1895,77.6,0.4,04,LA,max
 1896,80.1,2.9,04,LA,max
 1897,76.9,-0.3,04,LA,max
@@ -3271,7 +3273,8 @@ year,value,anomaly,month,state,type
 2012,57.3,9.3,03,LA,min
 2013,43,-5.0,03,LA,min
 2014,43.6,-4.4,03,LA,min
-2015,50.5,2.5,03,LA,min
+2015,50.6,2.6,03,LA,min
+2016,53.4,5.4,03,LA,min
 1895,54,-1.4,04,LA,min
 1896,59.7,4.3,04,LA,min
 1897,56.2,0.8,04,LA,min
@@ -4726,6 +4729,7 @@ year,value,anomaly,month,state,type
 2013,1.47,-3.49,03,LA,precip
 2014,4.47,-0.49,03,LA,precip
 2015,5.85,0.89,03,LA,precip
+2016,10.4,5.44,03,LA,precip
 1895,2.41,-2.43,04,LA,precip
 1896,3.83,-1.01,04,LA,precip
 1897,4.5,-0.34,04,LA,precip
@@ -6180,6 +6184,7 @@ year,value,anomaly,month,state,type
 2013,55.3,-3.7,03,LA,temp
 2014,55,-4.0,03,LA,temp
 2015,60.5,1.5,03,LA,temp
+2016,63.4,4.4,03,LA,temp
 1895,65.8,-0.5,04,LA,temp
 1896,69.9,3.6,04,LA,temp
 1897,66.5,0.2,04,LA,temp

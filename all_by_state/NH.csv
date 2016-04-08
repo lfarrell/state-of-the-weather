@@ -364,6 +364,7 @@ year,value,anomaly,month,state,type
 2013,-.87,-0.61,03,NH,drought
 2014,1.54,1.80,03,NH,drought
 2015,-1.03,-0.77,03,NH,drought
+2016,0,0.26,03,NH,drought
 1895,-.76,-0.53,04,NH,drought
 1896,-1.15,-0.92,04,NH,drought
 1897,-1,-0.77,04,NH,drought
@@ -1818,6 +1819,7 @@ year,value,anomaly,month,state,type
 2013,39.9,0.6,03,NH,max
 2014,33.6,-5.7,03,NH,max
 2015,35.5,-3.8,03,NH,max
+2016,45.1,5.8,03,NH,max
 1895,51.5,-0.4,04,NH,max
 1896,54.8,2.9,04,NH,max
 1897,54.1,2.2,04,NH,max
@@ -3272,6 +3274,7 @@ year,value,anomaly,month,state,type
 2013,21.8,3.4,03,NH,min
 2014,9.6,-8.8,03,NH,min
 2015,12.2,-6.2,03,NH,min
+2016,24.6,6.2,03,NH,min
 1895,28.9,-0.6,04,NH,min
 1896,29.9,0.4,04,NH,min
 1897,30.2,0.7,04,NH,min
@@ -4726,6 +4729,7 @@ year,value,anomaly,month,state,type
 2013,2.29,-1.23,03,NH,precip
 2014,4.11,0.59,03,NH,precip
 2015,1.65,-1.87,03,NH,precip
+2016,3.46,-0.06,03,NH,precip
 1895,5.22,1.66,04,NH,precip
 1896,1.35,-2.21,04,NH,precip
 1897,2.81,-0.75,04,NH,precip
@@ -6179,7 +6183,8 @@ year,value,anomaly,month,state,type
 2012,38.9,10.1,03,NH,temp
 2013,30.8,2.0,03,NH,temp
 2014,21.6,-7.2,03,NH,temp
-2015,23.9,-4.9,03,NH,temp
+2015,23.8,-5.0,03,NH,temp
+2016,34.9,6.1,03,NH,temp
 1895,40.2,-0.5,04,NH,temp
 1896,42.3,1.6,04,NH,temp
 1897,42.1,1.4,04,NH,temp

@@ -364,6 +364,7 @@ year,value,anomaly,month,state,type
 2013,.8,0.84,03,VA,drought
 2014,2.04,2.08,03,VA,drought
 2015,.05,0.09,03,VA,drought
+2016,1.3,1.34,03,VA,drought
 1895,.9,0.89,04,VA,drought
 1896,-.77,-0.78,04,VA,drought
 1897,-.36,-0.37,04,VA,drought
@@ -1818,6 +1819,7 @@ year,value,anomaly,month,state,type
 2013,50,-6.2,03,VA,max
 2014,52.5,-3.7,03,VA,max
 2015,55.5,-0.7,03,VA,max
+2016,63.5,7.3,03,VA,max
 1895,64.5,-1.7,04,VA,max
 1896,69.2,3.0,04,VA,max
 1897,66.5,0.3,04,VA,max
@@ -3272,6 +3274,7 @@ year,value,anomaly,month,state,type
 2013,30.2,-3.1,03,VA,min
 2014,28.8,-4.5,03,VA,min
 2015,32.7,-0.6,03,VA,min
+2016,39.8,6.5,03,VA,min
 1895,41.8,0.1,04,VA,min
 1896,46.2,4.5,04,VA,min
 1897,40.9,-0.8,04,VA,min
@@ -4726,6 +4729,7 @@ year,value,anomaly,month,state,type
 2013,3.7,-0.08,03,VA,precip
 2014,3.29,-0.49,03,VA,precip
 2015,3.75,-0.03,03,VA,precip
+2016,2,-1.78,03,VA,precip
 1895,5.23,1.86,04,VA,precip
 1896,2.05,-1.32,04,VA,precip
 1897,2.47,-0.90,04,VA,precip
@@ -6180,6 +6184,7 @@ year,value,anomaly,month,state,type
 2013,40.1,-4.6,03,VA,temp
 2014,40.7,-4.0,03,VA,temp
 2015,44.1,-0.6,03,VA,temp
+2016,51.7,7.0,03,VA,temp
 1895,53.2,-0.8,04,VA,temp
 1896,57.7,3.7,04,VA,temp
 1897,53.7,-0.3,04,VA,temp

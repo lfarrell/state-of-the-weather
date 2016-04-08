@@ -364,6 +364,7 @@ year,value,anomaly,month,state,type
 2013,-.5,-0.47,03,NJ,drought
 2014,1.21,1.24,03,NJ,drought
 2015,.77,0.80,03,NJ,drought
+2016,-1.58,-1.55,03,NJ,drought
 1895,-.13,-0.07,04,NJ,drought
 1896,-.97,-0.91,04,NJ,drought
 1897,.09,0.15,04,NJ,drought
@@ -1817,7 +1818,8 @@ year,value,anomaly,month,state,type
 2012,60.5,11.4,03,NJ,max
 2013,47.1,-2.0,03,NJ,max
 2014,45.6,-3.5,03,NJ,max
-2015,45.8,-3.3,03,NJ,max
+2015,45.9,-3.2,03,NJ,max
+2016,58,8.9,03,NJ,max
 1895,57.9,-2.5,04,NJ,max
 1896,62.5,2.1,04,NJ,max
 1897,61.3,0.9,04,NJ,max
@@ -3271,7 +3273,8 @@ year,value,anomaly,month,state,type
 2012,39.2,9.8,03,NJ,min
 2013,30.2,0.8,03,NJ,min
 2014,25.3,-4.1,03,NJ,min
-2015,26,-3.4,03,NJ,min
+2015,25.8,-3.6,03,NJ,min
+2016,35.7,6.3,03,NJ,min
 1895,37.2,-1.1,04,NJ,min
 1896,40.2,1.9,04,NJ,min
 1897,36.5,-1.8,04,NJ,min
@@ -4726,6 +4729,7 @@ year,value,anomaly,month,state,type
 2013,2.89,-1.00,03,NJ,precip
 2014,3.97,0.08,03,NJ,precip
 2015,4.57,0.68,03,NJ,precip
+2016,1.89,-2.00,03,NJ,precip
 1895,5.08,1.33,04,NJ,precip
 1896,1.35,-2.40,04,NJ,precip
 1897,3.92,0.17,04,NJ,precip
@@ -6179,7 +6183,8 @@ year,value,anomaly,month,state,type
 2012,49.8,10.5,03,NJ,temp
 2013,38.6,-0.7,03,NJ,temp
 2014,35.4,-3.9,03,NJ,temp
-2015,35.9,-3.4,03,NJ,temp
+2015,35.8,-3.5,03,NJ,temp
+2016,46.8,7.5,03,NJ,temp
 1895,47.5,-1.8,04,NJ,temp
 1896,51.4,2.1,04,NJ,temp
 1897,48.9,-0.4,04,NJ,temp

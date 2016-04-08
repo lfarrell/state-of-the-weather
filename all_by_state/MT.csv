@@ -364,6 +364,7 @@ year,value,anomaly,month,state,type
 2013,-3,-3.41,03,MT,drought
 2014,2.37,1.96,03,MT,drought
 2015,-.64,-1.05,03,MT,drought
+2016,-2.85,-3.26,03,MT,drought
 1895,-.4,-0.79,04,MT,drought
 1896,2.22,1.83,04,MT,drought
 1897,4.01,3.62,04,MT,drought
@@ -1817,7 +1818,8 @@ year,value,anomaly,month,state,type
 2012,52,11.8,03,MT,max
 2013,42.5,2.3,03,MT,max
 2014,39.8,-0.4,03,MT,max
-2015,52.7,12.5,03,MT,max
+2015,52.6,12.4,03,MT,max
+2016,49.4,9.2,03,MT,max
 1895,59.4,6.7,04,MT,max
 1896,49.8,-2.9,04,MT,max
 1897,54.2,1.5,04,MT,max
@@ -3272,6 +3274,7 @@ year,value,anomaly,month,state,type
 2013,18.5,-0.1,03,MT,min
 2014,19.1,0.5,03,MT,min
 2015,26.4,7.8,03,MT,min
+2016,25.3,6.7,03,MT,min
 1895,29.9,1.2,04,MT,min
 1896,25.9,-2.8,04,MT,min
 1897,30.9,2.2,04,MT,min
@@ -4726,6 +4729,7 @@ year,value,anomaly,month,state,type
 2013,.91,-0.37,03,MT,precip
 2014,2.26,0.98,03,MT,precip
 2015,.99,-0.29,03,MT,precip
+2016,1.36,0.08,03,MT,precip
 1895,1.22,-0.29,04,MT,precip
 1896,1.71,0.20,04,MT,precip
 1897,1.22,-0.29,04,MT,precip
@@ -6180,6 +6184,7 @@ year,value,anomaly,month,state,type
 2013,30.5,1.1,03,MT,temp
 2014,29.4,0.0,03,MT,temp
 2015,39.5,10.1,03,MT,temp
+2016,37.3,7.9,03,MT,temp
 1895,44.7,4.0,04,MT,temp
 1896,37.9,-2.8,04,MT,temp
 1897,42.6,1.9,04,MT,temp

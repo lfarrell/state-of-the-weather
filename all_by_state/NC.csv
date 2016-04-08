@@ -364,6 +364,7 @@ year,value,anomaly,month,state,type
 2013,.01,0.02,03,NC,drought
 2014,1.68,1.69,03,NC,drought
 2015,-.41,-0.40,03,NC,drought
+2016,1.81,1.82,03,NC,drought
 1895,2.55,2.47,04,NC,drought
 1896,-2.26,-2.34,04,NC,drought
 1897,.95,0.87,04,NC,drought
@@ -1818,6 +1819,7 @@ year,value,anomaly,month,state,type
 2013,55.2,-5.9,03,NC,max
 2014,57.5,-3.6,03,NC,max
 2015,62.3,1.2,03,NC,max
+2016,68.3,7.2,03,NC,max
 1895,67.4,-2.9,04,NC,max
 1896,74,3.7,04,NC,max
 1897,70.1,-0.2,04,NC,max
@@ -3272,6 +3274,7 @@ year,value,anomaly,month,state,type
 2013,32.7,-4.9,03,NC,min
 2014,33.4,-4.2,03,NC,min
 2015,39.1,1.5,03,NC,min
+2016,44,6.4,03,NC,min
 1895,44.7,-0.7,04,NC,min
 1896,49.9,4.5,04,NC,min
 1897,45,-0.4,04,NC,min
@@ -4726,6 +4729,7 @@ year,value,anomaly,month,state,type
 2013,2.67,-1.62,03,NC,precip
 2014,4.61,0.32,03,NC,precip
 2015,3.43,-0.86,03,NC,precip
+2016,2.13,-2.16,03,NC,precip
 1895,6.74,3.21,04,NC,precip
 1896,2.28,-1.25,04,NC,precip
 1897,3.43,-0.10,04,NC,precip
@@ -6180,6 +6184,7 @@ year,value,anomaly,month,state,type
 2013,44,-5.3,03,NC,temp
 2014,45.5,-3.8,03,NC,temp
 2015,50.7,1.4,03,NC,temp
+2016,56.2,6.9,03,NC,temp
 1895,56.1,-1.8,04,NC,temp
 1896,62,4.1,04,NC,temp
 1897,57.5,-0.4,04,NC,temp
